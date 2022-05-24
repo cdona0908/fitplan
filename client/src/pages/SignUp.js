@@ -24,5 +24,13 @@ function Signup(props) {
         });
         const token = mutationResponse.data.addUser.token;
         Auth.login(token)
+    };
+    //Method that tagets the name and value of the function of the react component and changes the state
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setformState({
+            ...formState,
+            [name]: value,
+        })
     }
 };
