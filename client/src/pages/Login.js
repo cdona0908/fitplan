@@ -24,6 +24,15 @@ function Login(props) {
         }
     };
 
+    // Method that targets the name and value of the function of the react component and change the state
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setformState({
+            ...formState,
+            [name]: value,
+        })
+    },
+
 
 }
 
