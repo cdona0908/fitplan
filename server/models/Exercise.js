@@ -4,10 +4,10 @@ const dateFormat = require('../utils/dateFormat');
 
 const exerciseSchema = new Schema(
     {
-      title: {
+      exerciseTitle: {
         type: String
       },
-      text: {
+      exerciseDescription: {
         type: String
       },
       createdAt: {
@@ -17,7 +17,13 @@ const exerciseSchema = new Schema(
       },
       image: {
         type: String
-      }
+      },
+      categories: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Category'
+        }
+      ],
     },
     {
       toJSON: {
