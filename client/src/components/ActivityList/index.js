@@ -62,7 +62,44 @@ const ActivityHome = ({activity}) => {
             });
             return;
         }
-    }
+        // Running the mutation
+        try {
+            const response = await saveActivity({
+                variables: { id: _id }
+            });
+      
+            dispatch({
+                type: ADD_ACTIVITIES,
+                activities: response.data.saveActivity.activities
+            });
+      
+            toast({
+                title: 'Activity saved!',
+                description: 'To view the activity, go to your dashboard',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+                position: 'top-right'
+            });
+      
+            onClose();
+          } catch (err) {
+            console.log(err);
+            toast({
+                title: 'Save activity failed!',
+                description: 'We could not save this activity. Please try again.',
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+                position: 'top-right'
+            });
+        }
+
+    };
+
+    return (
+        
+    )
 
 
 
