@@ -28,8 +28,16 @@ import {ADD_ROUTINES, ADD_ACTIVITIES} from '../utils/state/actions';
 const Dashboard = () => {
     const [state, dispatch] = useStoreContext();
 
-    const[userGoals, setGoals] = useState([]);
+    const[userRoutines, setRoutines] = useState([]);
     const [userActivities, setActivities] = useState([]);
 
-    const
+    const navigate = useNavigate();
+    //query function
+    const {loading, error, data: userData} = useQuery(QUERY_ME);
+
+    // completing the goal mutation
+    const [completeRoutine] = useMutation(COMPLETE_ROUTINE);
+
+    //destructuring global variables
+    const {routines, activities} = state;
 }
