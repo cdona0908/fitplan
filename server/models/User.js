@@ -26,12 +26,6 @@ const userSchema = new Schema(
         ref: 'Routine'
       }
     ],
-    exercises: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Exercise'
-      }
-    ]
   },
   {
     toJSON: {
