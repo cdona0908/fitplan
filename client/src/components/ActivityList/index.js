@@ -4,7 +4,7 @@ import {
     Modal,
     ModalOverlay,
     ModalContent,
-    Modalheader,
+    ModalHeader,
     ModalFooter,
     ModalBody,
     ModalCloseButton,
@@ -29,6 +29,7 @@ import Auth from '../../utils/auth';
 
 import {useStoreContext} from '../../utils/state/UserContext';
 import {ADD_ACTIVITIES} from '../../utils/state/actions';
+import { isRequiredArgument } from 'graphql';
 
 /*--------------------
 -----ACTIVITY HOME---- 
@@ -98,11 +99,50 @@ const ActivityHome = ({activity}) => {
     };
 
     return (
+        <WrapItem p={10}>
+            <Circle 
+            className=''
+            onClick={onOpen}
+            borderRadius='full'
+            width='300px'
+            height='300px'
+            bgImg={required(`../../assets/${image}`)}
+            cursor='pointer'>
+            <Text className='activity-text' fontSize='2xl'>
+                {title}
+            </Text>
+            <Modal
+                initialFocusRef={initialRef}
+                finalFocusRef={finalRef}
+                isOpen={isOpen}
+                onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>{title}</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>{text}</ModalBody>
+                    <ModalFooter>
+                        <Button
+                            isDisabled={
+                                state.activities.find((activity) => {
+                                    return activity._id === _id;
+                                })
+                                    ? true
+                                    : false
+                            }
+                            colorScheme="teal"
+                            variant="outline"
+                            onClick={handleHomeClick}>
+                            Save Activity
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+
+        </Circle>
+
+    </WrapItem>
         
-    )
-
-
-
-
-}
+    );
+};
 
