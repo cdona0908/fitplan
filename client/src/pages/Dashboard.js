@@ -35,7 +35,7 @@ const Dashboard = () => {
     //query function
     const {loading, error, data: userData} = useQuery(QUERY_ME);
 
-    // completing the goal mutation
+    // completing the routine mutation
     const [completeRoutine] = useMutation(COMPLETE_ROUTINE);
 
     //destructuring global variables
