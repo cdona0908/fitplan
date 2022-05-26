@@ -69,9 +69,163 @@ const Dashboard = () => {
         }
     }, [userData.dispatch]);
 
-    
+    const handleViewCompletedRoutines = () => {
+        navigate('/completed-goals');
+    };
 
+    if (error) {
+        let errorMessage = error.graphQLErrors[0].message;
+        return (
+            <ScaleFade>
+                <Box pl='15px' pr='15px' pt='150px' pb='300px'>
+                    <Alert
+                        status="error"
+                        variant="subtle"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        textAlign="center"
+                        height="300px"
+                        borderRadius="md">
+                        <AlertIcon boxSize='50px' />
+                        <AlertTitle mt="20px" mb="35px" fontSize="5xl">
+                            {errorMessage}!
+                        </AlertTitle>
+                        <AlertDescription fontSize="large">
+                            {errorMessage === 'Not logged in'
+                                ? `You are not logged in. Please log in to view your dashboard!`
+                                : null}
+                        </AlertDescription>
+                    </Alert>
 
+                </Box>
 
+            </ScaleFade>
 
-}
+        );
+    }
+
+    if(loading) {
+        return <di>Loading your Dashboard</di>
+    }
+
+    return (
+        <Flex 
+            flexDir={{base: 'column', md: 'row'}} 
+            alignItems={{base: 'center', md: 'normal'}}>
+            <Box w={{base: '80%', md: '50%'}} minHeight='100%' bg='#FFFFFF'>
+                <Heading 
+                   className='center-text' 
+                   fontSize='3xl' color='#2C7A7B'
+                   mt='20px'>
+                   My Activities
+                </Heading>
+                {userActivities.length === 0 ? (
+                    <ScaleFade in>
+                        <Box m="30px">
+                            <Alert
+                                status="info"
+                                variant="subtle"
+                                flexDirection="column"
+                                alignItems="center"
+                                justifyContent="center"
+                                textAlign="center"
+                                borderRadius="md"
+                                height="200px">
+                                <AlertIcon boxSize="40px" mr={0} />
+                                <AlertTitle mt={4} mb={1} fontSize="lg">
+                                No activities!
+                                </AlertTitle>
+                                <AlertDescription maxWidth="sm">
+                                    Go to the{' '}
+                                    <i>
+                                        <Link to="/">homepage</Link>
+                                    </i>{' '}
+                                    to view and add activities.
+                                </AlertDescription>
+                            </Alert>
+                        </Box>
+                    </ScaleFade>
+                )   : (
+                    <Box>
+                        {userActivities.map((activity) => {
+                            return (
+                                <ActivityDash
+                                    key={activity._id}
+                                    activity={activity}></ActivityDash>
+                            );
+                        })}
+                    </Box>
+                )}
+            </Box>
+
+            <Center>
+                <Divider 
+                orientation ='vertical'
+                width='1px' 
+                minHeight='100%' 
+                variant='solid'
+                bg='#234E52'
+            />
+        </Center>
+
+        <Box w={{base: '80%', md:'50%'}} minHeight='84.7vh'>
+            <Heading 
+                className='center-text'
+                fontSize='4xl'
+                color='#285E61'
+                mt='20px'>
+                My routines
+                </Heading>
+                <Center>
+                    <ButtonGroup isAtached mt='3'>
+                        <RoutineForm />
+                        <Button 
+                            onClick={handleViewCompletedRoutines}
+                            colorScheme='teal'
+                            size='md'>
+                            Completed Routines
+                        </Button>
+                    </ButtonGroup>
+                </Center>
+                {userRoutines.length=== 0 ? (
+                    <ScaleFade in>
+                        <Box m='30px'>
+                            <Alert 
+                                status='info' 
+                                variant='subtle' 
+                                flexDirection='column'
+                                alignItems='center'
+                                justifyContent='center'
+                                textAlign='center'
+                                height='200px'
+                                borderRadius='md'>
+                                <AlertIcon boxSize='40px' mr={0} />
+                                <AlertTitle mt={4} mb ={1} fontSize='lg'>
+                                    No Routines!
+                                </AlertTitle>
+                                <AlertDescription maxWidth='sm'>
+                                    Click Add Routine to create a routine.
+                                </AlertDescription>
+
+                            </Alert>
+                        </Box>
+                    </ScaleFade>
+                )   : (
+                    userRoutines.map((routine) => {
+                        return (
+                            <RoutineList
+                                key={routine.id}
+                                routine={routine}
+                                completeRoutine={completeRoutine}
+                            />
+                        );
+
+                    })
+                )}
+            </Box>
+        </Flex>
+    );
+};
+
+export default Dashboard;
