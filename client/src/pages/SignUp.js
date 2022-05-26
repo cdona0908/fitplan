@@ -36,49 +36,57 @@ function Signup(props) {
     }
 
 
-    // function that renders the template for the Signup form
-return (
-    <div className= "container my-1">
-        <Link to = "/login">⬅️Go to login</Link>
-        
-        <h2>Signup</h2>
-        <form onSubmit={handleFormSubmit}>
-            <div className='flex-row space-between my-2'>
-                <label htmlFor='username'>username:</label>
-                <input 
-                  placeholder='username'
-                  name='username'
-                  type= 'username'
-                  id= 'username'
-                  onChange= {handleChange}
+// function that renders the template for the Signup form
 
-                />
-             </div> 
-             <div className='flex-row space-between my-2'>
-                <label htmlFor='email'>Email:</label>
-                <input 
-                  placeholder='youremail@test.com'
-                  name='email'
-                  type= 'email'
-                  id= 'email'
-                  onChange= {handleChange}
-                />
-             </div>
-             <div className='flex-row space-between my-2'>
-                <label htmlFor='email'>Password:</label>
-                <input 
-                  placeholder='******'
-                  name='password'
-                  type= 'password'
-                  id= 'pwd'
-                  onChange= {handleChange}
-                />
-             </div>
-             <div className='flex-row flex-end'>
-                 <button type= 'submit'>Submit</button>
-             </div>
-        </form>
-    </div>
+    return (
+        <div className= "container my-1">
+            <Link to = "/login">⬅️Go to login</Link>
+        
+            <h2>Signup</h2>
+            <form onSubmit={handleFormSubmit}>
+                <div className='flex-row space-between my-2'>
+                    <label htmlFor='username'>username:</label>
+                    <input 
+                      placeholder='username'
+                      name='username'
+                      type= 'username'
+                      id= 'username'
+                      onChange= {handleChange}
+
+                    />
+                 </div>
+                 <div className='flex-row space-between my-2'>
+                    <label htmlFor='email'>Email:</label>
+                    <input 
+                      placeholder='youremail@test.com'
+                      name='email'
+                      type= 'email'
+                      id= 'email'
+                      onChange= {handleChange}
+                    />
+                 </div>
+                 <div className='flex-row space-between my-2'>
+                    <label htmlFor='email'>Password:</label>
+                    <input 
+                      placeholder='******'
+                      name='password'
+                      type= 'password'
+                      id= 'pwd'
+                      onChange= {handleChange}
+                    />
+                 </div>
+                 <div className='flex-row flex-end'>
+                     <button type= 'submit'>Submit</button>
+                 </div>
+            </form>
+        </div>
     );
 }
 
+export default Signup
+    
+
+
+
+
+                      
