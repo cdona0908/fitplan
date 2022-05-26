@@ -30,3 +30,42 @@ import Auth from '../../utils/auth';
 import {useStoreContext} from '../../utils/state/UserContext';
 import {ADD_ACTIVITIES} from '../../utils/state/actions';
 
+/*--------------------
+-----ACTIVITY HOME---- 
+----------------------*/
+
+const ActivityHome = ({activity}) => {
+    const {_id, title, image, text} = activity;
+
+    const[state, dispatch] = useStoreContext();
+
+    const toast = useToast();
+
+    const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const initialRef = React.useRef();
+    const finalRef = React.useRef();
+
+    const [saveActivity] = useMutation(ADD_ACTIVITY);
+
+    // if user clicks it add the activity to homepage
+    const handleHomeClick = async () => {
+        //validating user login
+        if (!Auth.loggedIn()) {
+            toast({
+                title: '',
+                description: '',
+                status: 'error',
+                duration: '',
+                isClosable: true,
+                position: 'top-right'
+            });
+            return;
+        }
+    }
+
+
+
+
+}
+
