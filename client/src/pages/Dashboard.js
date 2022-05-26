@@ -40,4 +40,20 @@ const Dashboard = () => {
 
     //destructuring global variables
     const {routines, activities} = state;
+
+    // using useffect function for routines and activities"
+    useEffect(() => {
+        if (routines.length) {
+            setRoutines(
+                routines.filter((routine) => {
+                    return !routine.isComplete;
+                })
+            )
+        }
+        if (activities) {
+            setActivities(activities);
+        }
+    }) [routines, activities]
+
+    
 }
