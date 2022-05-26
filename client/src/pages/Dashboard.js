@@ -53,7 +53,25 @@ const Dashboard = () => {
         if (activities) {
             setActivities(activities);
         }
-    }) [routines, activities]
+    }, [routines, activities])
+
+    // if not complete global store with user info
+    useEffect(() => {
+        if(userData) {
+            dispatch({
+                type: ADD_ROUTINES,
+                routines: userData.me.routines
+            });
+            dispatch({
+                type: ADD_ACTIVITIES,
+                activities: userData.me.activities
+            })
+        }
+    }, [userData.dispatch]);
 
     
+
+
+
+
 }
