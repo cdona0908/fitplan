@@ -34,6 +34,7 @@ const CompletedRoutines = () => {
             return routine.isComplete === true;
         })
     }
+    // Function that returns the routines template and when the routines are incompleted its takes back to dashboard to create new routines
 
     return (
         <Box minHeight='83.3vh'>
