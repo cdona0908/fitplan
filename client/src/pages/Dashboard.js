@@ -70,7 +70,7 @@ const Dashboard = () => {
     }, [userData.dispatch]);
 
     const handleViewCompletedRoutines = () => {
-        navigate('/completed-goals');
+        navigate('/completed-routines');
     };
 
     if (error) {
