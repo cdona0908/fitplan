@@ -1,0 +1,290 @@
+[
+    {
+        "exerciseTitle" : "Stair climber",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Cardio"
+            }
+        ]
+
+    },
+    
+    {
+        "exerciseTitle" : "Rower",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Cardio"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Elliptical trainer",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Cardio"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Treadmill running",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Cardio"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Dumbbell Bench Press",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Chest"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Pushups",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Chest"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Close-grip bench press",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Chest"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Dumbbell Flyes",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Chest"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "One-Arm Dumbbell Row",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Back"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Back extension",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Back"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Seated Cable Rows",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Back"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Superman",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Back"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Barbell walking lunge",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Legs"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Barbell Deadlift",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Legs"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Power snatch",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Legs"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Glute ham raise",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Legs"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Dumbbell floor press",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Arms"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Hammer Curls",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Arms"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Biceps curl to shoulder press",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Arms"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Push-Ups - Close Triceps Position",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Arms"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Clean and jerk",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Shoulders"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Single-arm kettlebell push-press",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Shoulders"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Elbow plank",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Abdominals"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Bottoms Up",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Abdominals"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Barbell glute bridge",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Glutes"
+            }
+        ]
+
+    },
+    {
+        "exerciseTitle" : "Step-up with knee raise",
+        "exerciseDescription": "",
+        "image": "",
+        "categories": [
+            {
+                "name": "Glutes"
+            }
+        ]
+
+    }
+    
+]
