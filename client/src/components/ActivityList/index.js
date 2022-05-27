@@ -146,3 +146,23 @@ const ActivityHome = ({activity}) => {
     );
 };
 
+/*------------------
+---ACTIVITY DASH----
+------------------*/
+
+const Activitydash = ({activity}) => {
+    const {_id, title, text} = activity;
+
+    const {isOpen: activityOpen, onToggle: toggleActivityText} = useDisclosure();
+
+    const toast = useToast();
+
+    const [removeActivity] = useMutation(REMOVE_ACTIVITY);
+
+    // if the remove Activity is clicked
+    const removeActivityHandler = async (event) => {
+        //Running the Mutation
+        
+    }
+}
+
