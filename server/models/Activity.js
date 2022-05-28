@@ -2,7 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const activitySchema = new Schema(
     {
-        exercises: [
+        routineName: {
+            type: Schema.Types.ObjectId,
+            ref: 'Routine',
+        },
+        exerciseTitle: [
             {
               type: Schema.Types.ObjectId,
               ref: 'Exercise'
