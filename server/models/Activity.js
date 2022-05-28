@@ -6,7 +6,7 @@ const activitySchema = new Schema(
             {
               type: Schema.Types.ObjectId,
               ref: 'Exercise'
-            }
+            }            
         ],
         weight: {
             type: Number
