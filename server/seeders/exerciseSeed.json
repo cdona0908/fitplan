@@ -6,7 +6,7 @@
         "image": "cardio-rower.png",
         "categories": [
             {
-                "name": "Cardio"
+                "categoryName": "Cardio"
             }
         ]
 
@@ -17,7 +17,7 @@
         "image": "cardio-elliptical.png",
         "categories": [
             {
-                "name": "Cardio"
+                "categoryName": "Cardio"
             }
         ]
 
@@ -28,7 +28,7 @@
         "image": "cardio-treadmill.png",
         "categories": [
             {
-                "name": "Cardio"
+                "categoryName": "Cardio"
             }
         ]
 
@@ -39,7 +39,7 @@
         "image": "chest-barbell-bench.png",
         "categories": [
             {
-                "name": "Chest"
+                "categoryName": "Chest"
             }
         ]
 
@@ -50,7 +50,7 @@
         "image": "chest-pushups.png",
         "categories": [
             {
-                "name": "Chest"
+                "categoryName": "Chest"
             }
         ]
 
@@ -62,7 +62,7 @@
         "image": "back-one-arm-dumbell-row.png",
         "categories": [
             {
-                "name": "Back"
+                "categoryName": "Back"
             }
         ]
 
@@ -74,7 +74,7 @@
         "image": "back-seated-cable-row.png",
         "categories": [
             {
-                "name": "Back"
+                "categoryName": "Back"
             }
         ]
 
@@ -85,7 +85,7 @@
         "image": "legs-legpress.png",
         "categories": [
             {
-                "name": "Legs"
+                "categoryName": "Legs"
             }
         ]
 
@@ -97,7 +97,7 @@
         "image": "legs-forward-lunge.png",
         "categories": [
             {
-                "name": "Legs"
+                "categoryName": "Legs"
             }
         ]
 
@@ -108,7 +108,7 @@
         "image": "legs-barbell-deadlift.png",
         "categories": [
             {
-                "name": "Legs"
+                "categoryName": "Legs"
             }
         ]
 
@@ -120,7 +120,7 @@
         "image": "arms-dumbbell-biceps-curl.png",
         "categories": [
             {
-                "name": "Arms"
+                "categoryName": "Arms"
             }
         ]
 
@@ -131,7 +131,7 @@
         "image": "arms-barbell-curls.png",
         "categories": [
             {
-                "name": "Arms"
+                "categoryName": "Arms"
             }
         ]
 
@@ -143,7 +143,7 @@
         "image": "arms-cable-v.png",
         "categories": [
             {
-                "name": "Arms"
+                "categoryName": "Arms"
             }
         ]
 
@@ -154,7 +154,7 @@
         "image": "shoulder-seated-dumbbell-press.png",
         "categories": [
             {
-                "name": "Shoulders"
+                "categoryName": "Shoulders"
             }
         ]
 
@@ -165,7 +165,7 @@
         "image": "shoulder-Single-arm-kettlebell.png",
         "categories": [
             {
-                "name": "Shoulders"
+                "categoryName": "Shoulders"
             }
         ]
 
@@ -176,7 +176,7 @@
         "image": "abs-elbow-plank.png",
         "categories": [
             {
-                "name": "Abdominals"
+                "categoryName": "Abdominals"
             }
         ]
 
@@ -187,7 +187,7 @@
         "image": "abs-crunches.png",
         "categories": [
             {
-                "name": "Abdominals"
+                "categoryName": "Abdominals"
             }
         ]
 
@@ -198,7 +198,7 @@
         "image": "glutes-ballhip.png",
         "categories": [
             {
-                "name": "Glutes"
+                "categoryName": "Glutes"
             }
         ]
 
@@ -209,7 +209,7 @@
         "image": "glutes-kickback.png",
         "categories": [
             {
-                "name": "Glutes"
+                "categoryName": "Glutes"
             }
         ]
 
