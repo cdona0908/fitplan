@@ -20,13 +20,32 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
-        routines: [Routine]      
+        routines: [Routine]
+        exercises: [Exercise]      
         
+    }
+
+    type Routine {
+        _id: ID
+        routineName: String
+        createdAt: String
+        workouts: [Workout]
+    }
+
+    type Workout {
+        _id: ID
+        workoutName: String
+        weight: Int
+        sets: Int
+        reps: Int
+        time: Int
+        createdAt: String
     }
 
     type Query {
         exercises: [Exercise]
         users: [User]
+        routines: [Routine]
     }
 `;
 
