@@ -29,7 +29,6 @@ import Auth from '../../utils/auth';
 
 import {useStoreContext} from '../../utils/state/UserContext';
 import {ADD_EXERCISES} from '../../utils/state/actions';
-import { isRequiredArgument } from 'graphql';
 
 
 
@@ -155,10 +154,42 @@ const Exercisedash = ({exercise}) => {
 
     const [removeExercise] = useMutation(REMOVE_EXERCISE);
 
+    // if the remove button is clicked
     const removeExerciseHandler = async (event) => {
-        //Running the Mutation
-        
-        
-    }
-}
+        //running the mutation
+        try {
+            await removeExercise({
+                variables: {id: _id}
+            });
+
+            toast({
+                title: 'Exercise removed!',
+                description: 'if you want to added it , go to your dashboard',
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+                position: 'top-right'
+            });
+      
+            onClose();
+          } catch (err) {
+            console.log(err);
+            toast({
+                title: 'Save exercise failed!',
+                description: 'We could not remove this exercise. Please try again.',
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+                position: 'top-right'
+            });
+        }
+
+    };
+};
+
+
+
+
+    
+
 
