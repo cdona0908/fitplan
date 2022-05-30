@@ -42,10 +42,31 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query {
         exercises: [Exercise]
-        users: [User]
+        exercise(_id: ID!): Exercise        
         routines: [Routine]
+        routine(_id: ID!): Routine
+        me: User
+        user(username: String!): User
+        users: [User]
+        
+    }
+
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
+        saveExercise(_id: ID!): User
+        removeExercise(_id: ID!): User
+        addRoutine(name: String!): User
+        deleteRoutine(_id: ID!): User
+        addWorkout(routineId: ID!, workoutName: String!, weight: Int, sets: Int, reps: Int, time: Int ): Routine
+        deleteWorkout(_id: ID!): Routine
     }
 `;
 
