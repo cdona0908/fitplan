@@ -4,11 +4,9 @@ const {User, Exercise} = require('../models')
 
 const resolvers = {
     Query: {
-      
-    },
-  
-    Mutation: {
-      
+        exercises: async ()=>{
+            return Exercise.find()
+        }
     }
 };
   

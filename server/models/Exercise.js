@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { Exercise } = require('.');
+
 const dateFormat = require('../utils/dateFormat');
 
 const exerciseSchema = new Schema(

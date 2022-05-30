@@ -5,6 +5,11 @@ const routineSchema = new Schema(
         routineName: {
             type: String
         },
+        username: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+
+        },
         createdAt: {
             type: Date,
             default: Date.now,
