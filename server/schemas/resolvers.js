@@ -51,6 +51,7 @@ const resolvers = {
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
+            
       
             return { token, user };
         },
@@ -103,7 +104,7 @@ const resolvers = {
         },
         addRoutine: async(parent, args, context) => {
             if (context.user) {
-                const routine = await Routine.create({ ...args, username: context.user.username });
+                const routine = await Routine.create({ ...args });
         
                const updatedUser = await User.findByIdAndUpdate(
                   { _id: context.user._id },

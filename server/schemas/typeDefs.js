@@ -63,7 +63,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         saveExercise(_id: ID!): User
         removeExercise(_id: ID!): User
-        addRoutine(name: String!): User
+        addRoutine(routineName: String!): User
         deleteRoutine(_id: ID!): User
         addWorkout(routineId: ID!, workoutName: String!, weight: Int, sets: Int, reps: Int, time: Int ): Routine
         deleteWorkout(_id: ID!): Routine
