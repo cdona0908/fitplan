@@ -41,7 +41,7 @@ const Dashboard = () => {
     //destructuring global variables
     const {routines, exercises} = state;
 
-    // using useffect function for routines and activities"
+    // using useffect function for routines and exercises"
     useEffect(() => {
         if (routines.length) {
             setRoutines(
@@ -120,7 +120,7 @@ const Dashboard = () => {
                    mt='20px'>
                    My Exercises
                 </Heading>
-                {userActivities.length === 0 ? (
+                {userExercises.length === 0 ? (
                     <ScaleFade in>
                         <Box m="30px">
                             <Alert
@@ -148,11 +148,11 @@ const Dashboard = () => {
                     </ScaleFade>
                 )   : (
                     <Box>
-                        {userActivities.map((activity) => {
+                        {userExercises.map((exercise) => {
                             return (
-                                <ActivityDash
-                                    key={activity._id}
-                                    activity={activity}></ActivityDash>
+                                <ExerciseDash
+                                    key={exercise._id}
+                                    exercise={exercise}></ExerciseDash>
                             );
                         })}
                     </Box>
