@@ -16,7 +16,7 @@ import {
     WrapItem,
     useToast,
     IconButton,
-    flex,
+    Flex,
     Collapse,
     Heading
 } from '@chakra-ui/react';
@@ -81,7 +81,7 @@ const ExerciseHome = ({exercise}) => {
             });
       
             onClose();
-          } catch (err) {
+        }   catch (err) {
             console.log(err);
             toast({
                 title: 'Save exercise failed!',
@@ -145,7 +145,7 @@ const ExerciseHome = ({exercise}) => {
 
 
 
-const Exercisedash = ({exercise}) => {
+const ExerciseDash = ({exercise}) => {
     const {_id, title, text} = exercise;
 
     const {isOpen: exerciseOpen, onToggle: toggleExerciseText} = useDisclosure();
@@ -172,7 +172,7 @@ const Exercisedash = ({exercise}) => {
             });
       
             onClose();
-          } catch (err) {
+        }   catch (err) {
             console.log(err);
             toast({
                 title: 'Save exercise failed!',
@@ -185,7 +185,81 @@ const Exercisedash = ({exercise}) => {
         }
 
     };
+
+
+const exerciseClickHandler = (event) => {
+    if (event.target !== event.currentTarget) {
+        return
+    }
+
+    toggleExerciseText()
 };
+
+return (
+    <Box>
+        <Box 
+            onClick={exerciseClickHandler}
+            borderRadius='lg'
+            bg='teal.100'
+            borderColor='gray.200'
+            border='1px'
+            maxWidth='100%'
+            fontSize='2xl'
+            p='28px'
+            cursor='pointer'>
+            <Flex justifyContent='end' mb='-9'>
+                <IconButton
+                onClick={removeExerciseHandler}
+                variant='outline'
+                aria-label='remove exercise'
+                colorScheme='teal'
+                color='#285E61'
+                width='10px'
+                size='sm'
+                icon={<SmallCloseIcon/>}
+            />
+            </Flex>
+            <Heading color='#285E61' size='lg' onClick={exerciseClickHandler}>
+                {title}
+            </Heading>
+        </Box>
+
+        {/* */}
+        <Collapse in={exerciseOpen}>
+            <Flex 
+                maxHeight='200px'
+                p='30px'
+                color='#285E61'
+                borderColor='gray.200'
+                ml='2'
+                mr='2'
+                bg='teal.50'
+                rounded='md'
+                shadow='md'
+                justifyContent='center'
+                overflow='hidden'>
+                <IconButton 
+                    size='md'
+                    mt='-5'
+                    ml='-3'
+                    onClick={toggleActivityText}
+                    icon={<ArrowUpIcon />}
+                    variant='ghost'
+                    colorScheme='teal'
+                    borderRadius='full'
+                    fontSize='xl'
+                    arial-label='Close Reflections'
+                    />
+                    <Text overflow='auto'>{text}</Text>
+                </Flex>
+            </Collapse>
+        </Box>
+    );
+
+};
+
+export {ExerciseHome, ExerciseDash};
+
 
 
 
