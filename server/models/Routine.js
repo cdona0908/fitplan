@@ -1,27 +1,29 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
+const workoutSchema = require('./Workout')
 
 const routineSchema = new Schema(
     {
         routineName: {
-            type: String
+            type: String,
+            required: 'Please give your routine a name!',
+            minlength: 1,
+            maxlength: 100
         },
-        username: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-
-        },
+        
         createdAt: {
             type: Date,
             default: Date.now,
             get: (timestamp) => dateFormat(timestamp)
         },
-        activities: [
-            {
-              type: Schema.Types.ObjectId,
-              ref: 'Activity'
-            }
-        ],
+        workouts: [workoutSchema],
+    },
+    {
+        toJSON: {
+          getters: true
+        }
     }
+    
 );
     
 const Routine = model('Routine', routineSchema);

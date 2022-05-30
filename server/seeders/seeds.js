@@ -15,16 +15,36 @@ db.once('open', async () => {
     try {
          // clean database
         // await Activity.deleteMany({});
-        // await Routine.deleteMany({});
+        await Routine.deleteMany({});
         // await User.deleteMany({});
         
         //await Category.deleteMany({});
         //await Category.insertMany(categorySeeds);
         await Exercise.deleteMany({});
         await Exercise.insertMany(exerciseSeeds);
+        await User.deleteMany({});
+        await User.insertMany(userSeeds);
+        //await Routine.deleteMany({});
+       // await Routine.insertMany(routineSeeds);
+
         // await User.insertMany(userSeeds);
         // await Routine.insertMany(routineSeeds);
         // await Activity.insertMany(activitySeeds); 
+
+        for (let i = 0; i < routineSeeds.length; i++) {
+            const { _id, routineAuthor } = await Routine.create(routineSeeds[i]);
+            const user = await User.findOneAndUpdate(
+              { username: routineAuthor },
+              {
+                $addToSet: {
+                  routines: _id,
+                },
+              }
+            );
+          }
+
+
+
 
     } catch (err) {
         console.error(err);

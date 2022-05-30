@@ -6,7 +6,12 @@ const resolvers = {
     Query: {
         exercises: async ()=>{
             return Exercise.find()
-        }
+        },
+        users: async () => {
+            return User.find()
+            .select('-__v -password');             
+                           
+        },
     }
 };
   
