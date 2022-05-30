@@ -130,7 +130,7 @@ const resolvers = {
                         
                const updatedRoutine = await Routine.findByIdAndUpdate(
                   { _id: routineId },
-                  { $push: { routines: {workoutName, weight, sets, reps, time} } },
+                  { $push: { workouts: {workoutName, weight, sets, reps, time} } },
                   { new: true, runValidators: true  }
                 );
         
