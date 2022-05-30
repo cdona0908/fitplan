@@ -1,94 +1,98 @@
 // import data
 const userSeeds = require('./userSeed.json');
-//const categorySeeds = require('./categorySeed.json');
 const exerciseSeeds = require('./exerciseSeed.json');
 const routineSeeds = require('./routineSeed.json');
-const activitySeeds = require('./activitySeed.json')
+const workoutSeeds = require('./workoutSeed.json');
 
 // connect to db
 const db = require('../config/connection');
 
-const {User, Exercise, Activity, Routine } = require ('../models');
+const {User, Exercise, Routine } = require ('../models');
+
+// returns array of generated ids
+const getIds = (array) => {
+  const idArray = [];
+  for (let i = 0; i < array.length; i++) {
+    let id = array[i]._id;
+    idArray.push(id);
+  }
+
+  return idArray;
+};
 
 
 db.once('open', async () => {
-    try {
-         // clean database
-        // await Activity.deleteMany({});
-        await Routine.deleteMany({});
-        // await User.deleteMany({});
-        
-        //await Category.deleteMany({});
-        //await Category.insertMany(categorySeeds);
-        await Exercise.deleteMany({});
-        await Exercise.insertMany(exerciseSeeds);
-        await User.deleteMany({});
-        await User.insertMany(userSeeds);
-        //await Routine.deleteMany({});
-       // await Routine.insertMany(routineSeeds);
 
-        // await User.insertMany(userSeeds);
-        // await Routine.insertMany(routineSeeds);
-        // await Activity.insertMany(activitySeeds); 
+  //clear data from tables
+  await User.deleteMany({});
+  await Exercise.deleteMany({});
+  await Routine.deleteMany({});
 
-        for (let i = 0; i < routineSeeds.length; i++) {
-            const { _id, routineAuthor } = await Routine.create(routineSeeds[i]);
-            const user = await User.findOneAndUpdate(
-              { username: routineAuthor },
-              {
-                $addToSet: {
-                  routines: _id,
-                },
-              }
-            );
-          }
+  console.log('Deleted existing db data');
+  
+  // create users and get ids
+  const createUsers = await User.insertMany(userSeeds);
+  const newUserIds = getIds(createUsers);
+  console.log('Created Users');
 
+  // add exercises
+  const createExercises = await Exercise.insertMany(exerciseSeeds);
+  const newExerciseIds = getIds(createExercises);
+  console.log('Created Exercises');
 
+  //assign each user an exercise
 
+  for await (const userId of newUserIds) {
+    // generate random exercise
+    const index = Math.floor(Math.random() * (newExerciseIds.length - 1));
 
-    } catch (err) {
-        console.error(err);
-        process.exit(1);
-    } 
-   
-    
-    
-    
+    const exercise = newExerciseIds[index];
 
-    // bulk create each model
-    // const categories = await Category.insertMany(categorySeeds);
-    // const exercises = await Exercise.insertMany(exerciseSeeds);
-    // const users = await User.insertMany(userSeeds);
-    // const routines = await Routine.insertMany(routineSeeds); 
-    // const activities = await Activity.insertMany(activitySeeds);
-    
+    await User.findOneAndUpdate(
+      { _id: userId },
+      {
+        $push: { exercises: exercise }
+      }
+    );
+  }
 
-    // for (newRoutine of routines) {
+  console.log('Added Exercises to Users');
 
-    //     // randomly add an activity to a routine
-    //     const tempActivity = activities[Math.floor(Math.random() * activities.length)];
-    //     newRoutine.activities = tempActivity._id;
-    //     await newRoutine.save();
+  //add routines
+  const createRoutines = await Routine.insertMany(routineSeeds);
+  const newRoutineIds = getIds(createRoutines);
 
-    //     // reference routine on activity model, too
-    //     tempActivity.routines.push(newRoutine._id);
-    //     await tempActivity.save();
+  console.log('Created Routines');
 
-    //     // randomly add a routine to a user
-    //     const tempRoutine = routines[Math.floor(Math.random() * routines.length)];
-    //     newUser.routines = tempRoutine._id;
-    //     await newUser.save();
+  //add workouts to routines
+  for await (const data of workoutSeeds) {
+    let index = Math.floor(Math.random() * (newRoutineIds.length - 1));
 
-    //     // reference user on routine model, too
-    //     tempRoutine.user.push(newUser._id);
-    //     await tempRoutine.save();
-
-    // }
+    await Routine.findOneAndUpdate(
+      {
+        _id: newRoutineIds[index]
+      },
+      { $push: { workouts: data } }
+    );
+  }
 
 
-    console.log('Database successfully seeded!');
-    process.exit(0);
+  console.log('Added Workouts to Routines');
 
+  //add Routines to Users
+  for await (const routine of newRoutineIds) {
+    let index = Math.floor(Math.random() * 4);
+
+    await User.findOneAndUpdate(
+      {
+        _id: newUserIds[index]
+      },
+      { $push: { routines: routine } }
+    );
+  }
+
+  console.log('Database successfully seeded!');
+  process.exit(0);
 
 });
 

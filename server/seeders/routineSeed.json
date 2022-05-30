@@ -1,33 +1,19 @@
 [
     {
-        "routineName": "Day 1",
-        "username": "Molly48",        
-        "activities": []    
+        "routineName": "Day 1"          
     },
     {
-        "routineName": "Monday",
-        "username": "Katlyn85",        
-        "activities": []    
+        "routineName": "Monday"
+        
     },
     {
-        "routineName": "Tuesday",
-        "username": "Lessie_Kautzer61",        
-        "activities": []    
+        "routineName": "Tuesday"
     },
     {
-        "routineName": "Best Routine",
-        "username": "",        
-        "activities": []    
+        "routineName": "Best Routine"
     },
     {
-        "routineName": "First Routine",
-        "username": "Molly48",        
-        "activities": []    
-    },
-    {
-        "routineName": "Fat Burn", 
-        "username": "Elton_Heaney",       
-        "activities": []    
-    }
+        "routineName": "First Routine"
+    }    
 
 ]

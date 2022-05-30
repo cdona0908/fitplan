@@ -1,0 +1,73 @@
+[
+    {
+        "workoutName":"Treadmill",
+        "weight": 0,
+        "sets": 0,
+        "reps": 0,
+        "time":20
+    },
+    {
+        "workoutName":"Pushups",
+        "weight":0,
+        "sets":3,
+        "reps":20,
+        "time":0
+    },
+    {
+        "workoutName":"Leg Press",
+        "weight":60,
+        "sets":4,
+        "reps":15,
+        "time":0
+    },
+    {
+        "workoutName":"Dumbbell Bicep Curl",
+        "weight":50,
+        "sets":3,
+        "reps":20,
+        "time":0
+    },
+    {
+        "workoutName":"Barbell Curl",
+        "weight":30,
+        "sets":2,
+        "reps":30,
+        "time":0
+    },
+    {
+        "workoutName":"Seated Dumbbell Press",
+        "weight":120,
+        "sets":3,
+        "reps":15,
+        "time":0
+    },
+    {
+        "workoutName":"Elliptical trainer",
+        "weight": 0,
+        "sets": 0,
+        "reps": 0,
+        "time":45
+    },
+    {
+        "workoutName":"Rower",
+        "weight": 0,
+        "sets": 0,
+        "reps": 0,
+        "time":30
+    },
+    {
+        "workoutName":"Forward lunge",
+        "weight": 30,
+        "sets": 2,
+        "reps": 20,
+        "time":0
+    },
+    {
+        "workoutName":"Cable V-bar push-down",
+        "weight": 60,
+        "sets": 4,
+        "reps": 15,
+        "time":0
+    }
+    
+]
