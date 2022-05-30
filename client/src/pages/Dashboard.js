@@ -18,18 +18,18 @@ import {
 import {useMutation, useQuery} from '@apollo/client';
 import {QUERY_ME} from '../utils/queries';
 import RoutineForm from '../components/RoutineForm';
-import {ExerciseDash} from '../components/ExerciseDash';
+import {ExerciseDash} from '../components/Exercise';
 import RoutineList from '../components/RoutineList';
 import {COMPLETE_ROUTINE} from '../utils/mutations';
 
 import {useStoreContext} from '../utils/state/actions';
-import {ADD_ROUTINES, ADD_ACTIVITIES} from '../utils/state/actions';
+import {ADD_ROUTINES, ADD_EXERCISES} from '../utils/state/actions';
 
 const Dashboard = () => {
     const [state, dispatch] = useStoreContext();
 
     const[userRoutines, setRoutines] = useState([]);
-    const [userActivities, setActivities] = useState([]);
+    const [userExercises, setExercises] = useState([]);
 
     const navigate = useNavigate();
     //query function
@@ -39,7 +39,7 @@ const Dashboard = () => {
     const [completeRoutine] = useMutation(COMPLETE_ROUTINE);
 
     //destructuring global variables
-    const {routines, activities} = state;
+    const {routines, exercises} = state;
 
     // using useffect function for routines and activities"
     useEffect(() => {
@@ -50,10 +50,10 @@ const Dashboard = () => {
                 })
             )
         }
-        if (activities) {
-            setActivities(activities);
+        if (exercises) {
+            setExercises(exercises);
         }
-    }, [routines, activities])
+    }, [routines, exercises])
 
     // if not complete global store with user info
     useEffect(() => {
@@ -63,8 +63,8 @@ const Dashboard = () => {
                 routines: userData.me.routines
             });
             dispatch({
-                type: ADD_ACTIVITIES,
-                activities: userData.me.activities
+                type: ADD_EXERCISES,
+                exercises: userData.me.exercises
             })
         }
     }, [userData.dispatch]);
@@ -141,7 +141,7 @@ const Dashboard = () => {
                                     <i>
                                         <Link to="/">homepage</Link>
                                     </i>{' '}
-                                    to view and add activities.
+                                    to view and add exercises.
                                 </AlertDescription>
                             </Alert>
                         </Box>
