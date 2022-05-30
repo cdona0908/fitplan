@@ -18,7 +18,7 @@ import {
 import {useMutation, useQuery} from '@apollo/client';
 import {QUERY_ME} from '../utils/queries';
 import RoutineForm from '../components/RoutineForm';
-import {ActivityDash} from '../components/ActivityList';
+import {ExerciseDash} from '../components/ExerciseDash';
 import RoutineList from '../components/RoutineList';
 import {COMPLETE_ROUTINE} from '../utils/mutations';
 
@@ -118,7 +118,7 @@ const Dashboard = () => {
                    className='center-text' 
                    fontSize='3xl' color='#2C7A7B'
                    mt='20px'>
-                   My Activities
+                   My Exercises
                 </Heading>
                 {userActivities.length === 0 ? (
                     <ScaleFade in>
@@ -134,7 +134,7 @@ const Dashboard = () => {
                                 height="200px">
                                 <AlertIcon boxSize="40px" mr={0} />
                                 <AlertTitle mt={4} mb={1} fontSize="lg">
-                                No activities!
+                                No exercises!
                                 </AlertTitle>
                                 <AlertDescription maxWidth="sm">
                                     Go to the{' '}
