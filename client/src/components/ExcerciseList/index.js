@@ -12,7 +12,8 @@ const ExerciseList = ({ exercises }) => {
           <h3>{exerciseTitle}</h3>
           {exercises &&
             exercises.map(exercise => (
-              <div key={exercise._id} className="card mb-3">                  
+              <div key={exercise._id} className="card mb-3"> 
+                              
                 <p className="card-header">
                   {exercise.exerciseTitle}                  
                 </p>
