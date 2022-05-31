@@ -22,10 +22,7 @@ const Header = () => {
               Logout
             </a>
             </>) : (
-              <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
-              </>
+              <><a href="/login">Login</a><br></br><a href="/signup">Signup</a></>
             )
           }          
         </nav>

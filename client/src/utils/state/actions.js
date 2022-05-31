@@ -1,0 +1,2 @@
+export const ADD_ROUTINES = 'ADD_ROUTINES';
+export const ADD_EXERCISES = 'ADD_EXERCISES';

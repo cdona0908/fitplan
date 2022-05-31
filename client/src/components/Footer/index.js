@@ -1,12 +1,22 @@
 import React from 'react';
+import { Box, Center, Text } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container">
-        &copy;{new Date().getFullYear()} by Ajaypal, Celia and Wilmer
-      </div>
-    </footer>
+    <div className='wrapper'>
+      <Center
+        className="footer"
+        minWidth="max-content"
+        alignItems="center"
+        gap="2"
+        bg="#FFFFFF">
+        <Box p="5">
+          <Text fontSize="lg" color="black">
+          &copy;{new Date().getFullYear()} by Ajaypal, Celia and Wilmer
+          </Text>
+        </Box>
+      </Center>
+    </div>
   );
 };
 

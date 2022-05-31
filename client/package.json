@@ -6,6 +6,7 @@
   "dependencies": {
     "@apollo/client": "^3.6.6",
     "@chakra-ui/icons": "^2.0.1",
+    "@chakra-ui/react": "^2.1.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fontsource/cabin-sketch": "^4.5.7",
