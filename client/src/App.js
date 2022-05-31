@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 //import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
