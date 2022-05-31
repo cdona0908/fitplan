@@ -1,33 +1,17 @@
-import './App.css';
+import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-//import components
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-//import pages
-
-//function from Apollo Client that will retrieve the token from localStorage
-import { setContext } from '@apollo/client/link/context';
-
-// function to retrieve the token from localStorage and set the HTTP request headers of every request to include the token
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
+import Home from './pages/Home';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
@@ -37,11 +21,11 @@ function App() {
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <div className="container">
-          
+          <Home />
         </div>
         <Footer />
       </div>
-    </ApolloProvider>    
+    </ApolloProvider>
   );
 }
 

@@ -1,30 +1,32 @@
-//importing parameters that we're going to need to add the homepage for the activities and link it all together to make the function work properly
-import React from "react";
-import {ActivityHome} from '../components/ActivityList/';
-import {useQuery} from '@apollo/client';
-import {QUERY_ACTIVITIES} from '../utils/queries';
-import {Wrap} from '@chakra-ui/react';
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import {QUERY_EXERCISES} from '../utils/queries';
+import ExerciseList from '../components/ExcerciseList'
 
-// creating a function that import the activities from the db
 const Home = () => {
-    const {loading, data: activityData} = useQuery(QUERY_ACTIVITIES);
 
-    if (loading) {
-        return <div>Loading Activities...</div>
-    }
+   // use useQuery hook to make query request
+   const { loading, data } = useQuery(QUERY_EXERCISES);
+   if (loading) {
+    return <div>loading Exercises...</div>;
+  }
+   const exercises = data?.exercises || [];
+   console.log(exercises);
 
-    // Returns the template of Activities
-    return (
-        // <Grid templateColumns='repeat(5, 1fr)' gap{6}>
-        <Wrap spacing='5px' justify='center'>
-            {activityData.activities.map((activity) => {
-                return (
-                    <ActivityHome key={activity.title} activity={activity}></ActivityHome>
-                );
-            })}
+  return (
+    <main>
+      <div className='flex-row justify-space-between'>
+        <div className='col-12 mb-3'>
+        {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <ExerciseList exercises={exercises} title="Exercises..." />
+      )
 
-        </Wrap>
-        // </Grid>
-    )
-}
+        }</div>
+      </div>
+    </main>
+  );
+};
 
+export default Home;
