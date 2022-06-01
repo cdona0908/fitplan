@@ -12,7 +12,7 @@ const Footer = () => {
         bg="#FFFFFF">
         <Box p="5">
           <Text fontSize="lg" color="teal">
-            From the CRMMMM developers &copy;{new Date().getFullYear()}
+            ACW &copy;{new Date().getFullYear()}
           </Text>
         </Box>
       </Center>

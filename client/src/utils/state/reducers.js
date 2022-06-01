@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { ADD_ROUTINES, SAVE_EXERCISES, } from './actions';
+import { ADD_ROUTINES, SAVE_EXERCISES } from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {

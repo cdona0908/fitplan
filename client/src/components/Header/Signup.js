@@ -161,7 +161,7 @@ function SignupForm() {
   return (
     <>
       <Button
-        color="#FFFFFF"
+        color="#000000"
         variant="ghost"
         _hover={{ bg: 'teal.300' }}
         onClick={onOpen}>
