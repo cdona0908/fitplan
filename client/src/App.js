@@ -43,8 +43,8 @@ function App() {
       <Router>
         <StoreProvider>
           <Header />
-          {/* <Routes>
-            <Route path="/" element={<Home />}></Route> */}
+           <Routes> 
+            {/* <Route path="/" element={<Home />}></Route>  */}
             {/* <Route path="dashboard" element={<Dashboard />}></Route>             */}
             {/* catch any routes that are not listed above and return this */}
             {/* <Route
@@ -56,8 +56,8 @@ function App() {
                   </Center>
                 </section>
               }
-            />
-          </Routes> */}
+            />*/}
+          </Routes> 
           <Footer />
         </StoreProvider>
       </Router>
