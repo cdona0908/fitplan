@@ -11,8 +11,6 @@ import Footer from './components/Footer';
 //import Dashboard from '../src/pages/Dashboard';
 import Home from './pages/Home';
 import { StoreProvider } from './utils/state/UserContext';
-//chakta imports
-import { Center, Text } from '@chakra-ui/react';
 
 //function from Apollo Client that will retrieve the token from localStorage
 import { setContext } from '@apollo/client/link/context';
