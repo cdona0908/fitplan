@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 
 //import pages
 //import Dashboard from '../src/pages/Dashboard';
-//import Home from './pages/Home';
+import Home from './pages/Home';
 import { StoreProvider } from './utils/state/UserContext';
 //chakta imports
 import { Center, Text } from '@chakra-ui/react';
@@ -44,7 +44,7 @@ function App() {
         <StoreProvider>
           <Header />
            <Routes> 
-            {/* <Route path="/" element={<Home />}></Route>  */}
+            <Route path="/" element={<Home />}></Route> 
             {/* <Route path="dashboard" element={<Dashboard />}></Route>             */}
             {/* catch any routes that are not listed above and return this */}
             {/* <Route
