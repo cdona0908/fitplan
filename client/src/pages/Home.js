@@ -19,7 +19,7 @@ const Home = () => {
         <Wrap spacing='5px' justify='center'>
             {exerciseData.exercises.map((exercise) => {
                 return (
-                    <ExerciseHome key={exercise.title} exercise={exercise}></ExerciseHome>
+                    <ExerciseHome key={exercise.exerciseTitle} exercise={exercise}></ExerciseHome>
                 );
             })}
 

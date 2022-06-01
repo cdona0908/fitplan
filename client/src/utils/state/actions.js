@@ -1,2 +1,2 @@
-export const ADD_ROUTINES = 'ADD_ROUTINES';
-export const ADD_EXERCISES = 'ADD_EXERCISES';
+export const ADD_ROUTINE = 'ADD_ROUTINE';
+export const SAVE_EXERCISE = 'SAVE_EXERCISE';

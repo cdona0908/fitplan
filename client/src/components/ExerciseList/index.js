@@ -23,12 +23,12 @@ import {
 import {SmallCloseIcon, ArrowUpIcon} from '@chakra-ui/icons';
 
 import {useMutation} from '@apollo/client';
-import {ADD_EXERCISE, REMOVE_EXERCISE} from '../../utils/mutations';
+import {SAVE_EXERCISE, REMOVE_EXERCISE} from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
 import {useStoreContext} from '../../utils/state/UserContext';
-import {ADD_EXERCISES} from '../../utils/state/actions';
+import {SAVE_EXERCISE} from '../../utils/state/actions';
 
 
 
@@ -44,7 +44,7 @@ const ExerciseHome = ({exercise}) => {
     const initialRef = React.useRef();
     const finalRef = React.useRef();
 
-    const [saveExercise] = useMutation(ADD_EXERCISE);
+    const [saveExercise] = useMutation(SAVE_EXERCISE);
 
     // if user clicks it add the exercise to homepage
     const handleHomeClick = async () => {
@@ -67,7 +67,7 @@ const ExerciseHome = ({exercise}) => {
             });
       
             dispatch({
-                type: ADD_EXERCISES,
+                type: SAVE_EXERCISE,
                 exercises: response.data.saveExercise.exercises
             });
       

@@ -7,8 +7,8 @@ const { Provider } = StoreContext;
 
 export const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useUserReducer({
-    goals: [],
-    activities: []
+    routines: [],
+    exercises: []
   });
 
   console.log(state);

@@ -1,15 +1,15 @@
 import { useReducer } from 'react';
-import { ADD_ROUTINES, ADD_EXERCISES } from './actions';
+import { ADD_ROUTINE, SAVE_EXERCISE } from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case ADD_ROUTINES:
+    case ADD_ROUTINE:
       return {
         ...state,
         routines: [...action.routines]
       };
 
-    case ADD_EXERCISES:
+    case SAVE_EXERCISE:
       return {
         ...state,
         exercises: [...action.exercises]
