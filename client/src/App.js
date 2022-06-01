@@ -4,12 +4,12 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //import components
-import Header from './components/Header';
+// import Header from './components/Header';
 import Footer from './components/Footer';
 
 //import pages
 //import Dashboard from '../src/pages/Dashboard';
-import Home from './pages/Home';
+//import Home from './pages/Home';
 import { StoreProvider } from './utils/state/UserContext';
 //chakta imports
 import { Center, Text } from '@chakra-ui/react';
@@ -42,12 +42,12 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
+          {/* <Header /> */}
+          {/* <Routes>
+            <Route path="/" element={<Home />}></Route> */}
             {/* <Route path="dashboard" element={<Dashboard />}></Route>             */}
             {/* catch any routes that are not listed above and return this */}
-            <Route
+            {/* <Route
               path="*"
               element={
                 <section>
@@ -57,7 +57,7 @@ function App() {
                 </section>
               }
             />
-          </Routes>
+          </Routes> */}
           <Footer />
         </StoreProvider>
       </Router>
