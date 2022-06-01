@@ -28,7 +28,7 @@ import {SAVE_EXERCISE, REMOVE_EXERCISE} from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 import {useStoreContext} from '../../utils/state/UserContext';
-import {SAVE_EXERCISE} from '../../utils/state/actions';
+import {SAVE_EXERCISES} from '../../utils/state/actions';
 
 
 
@@ -103,7 +103,7 @@ const ExerciseHome = ({exercise}) => {
             borderRadius='full'
             width='300px'
             height='300px'
-            bgImg={required(`../../assets/${image}`)}
+            bgImg={require(`../../assets/${image}`)}
             cursor='pointer'>
             <Text className='exercise-text' fontSize='2xl'>
                 {title}
@@ -171,7 +171,7 @@ const ExerciseDash = ({exercise}) => {
                 position: 'top-right'
             });
       
-            onClose();
+            //onClose();
         }   catch (err) {
             console.log(err);
             toast({
@@ -242,7 +242,7 @@ return (
                     size='md'
                     mt='-5'
                     ml='-3'
-                    onClick={toggleActivityText}
+                    onClick={toggleExerciseText}
                     icon={<ArrowUpIcon />}
                     variant='ghost'
                     colorScheme='teal'
