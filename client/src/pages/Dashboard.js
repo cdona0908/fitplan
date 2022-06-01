@@ -18,9 +18,8 @@ import {
 import {useMutation, useQuery} from '@apollo/client';
 import {QUERY_ME} from '../utils/queries';
 import RoutineForm from '../components/RoutineForm';
-import {ExerciseDash} from '../components/Exercise';
+import {ExerciseDash} from '../components/ExerciseList';
 import RoutineList from '../components/RoutineList';
-import {COMPLETE_ROUTINE} from '../utils/mutations';
 
 import {useStoreContext} from '../utils/state/actions';
 import {ADD_ROUTINES, ADD_EXERCISES} from '../utils/state/actions';
@@ -35,8 +34,6 @@ const Dashboard = () => {
     //query function
     const {loading, error, data: userData} = useQuery(QUERY_ME);
 
-    // completing the routine mutation
-    const [completeRoutine] = useMutation(COMPLETE_ROUTINE);
 
     //destructuring global variables
     const {routines, exercises} = state;
@@ -217,7 +214,6 @@ const Dashboard = () => {
                             <RoutineList
                                 key={routine.id}
                                 routine={routine}
-                                completeRoutine={completeRoutine}
                             />
                         );
 
