@@ -11,8 +11,8 @@ const Footer = () => {
         gap="2"
         bg="#FFFFFF">
         <Box p="5">
-          <Text fontSize="lg" color="black">
-          &copy;{new Date().getFullYear()} by Ajaypal, Celia and Wilmer
+          <Text fontSize="lg" color="teal">
+            ACW &copy;{new Date().getFullYear()}
           </Text>
         </Box>
       </Center>

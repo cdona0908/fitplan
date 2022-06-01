@@ -6,13 +6,18 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
-//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //import components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 //import pages
+//import Dashboard from '../src/pages/Dashboard';
+import Home from "./pages/Home";
+import { StoreProvider } from "./utils/state/UserContext";
+//chakta imports
+import { Center, Text } from "@chakra-ui/react";
 
 //function from Apollo Client that will retrieve the token from localStorage
 import { setContext } from "@apollo/client/link/context";
@@ -40,11 +45,27 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
-        <div className="container"></div>
-        <Footer />
-      </div>
+      <Router>
+        <StoreProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            {/* <Route path="dashboard" element={<Dashboard />}></Route>             */}
+            {/* catch any routes that are not listed above and return this */}
+            {/* <Route
+              path="*"
+              element={
+                <section>
+                  <Center height="88.6vh">
+                    <Text fontSize="5xl">There's nothing here!</Text>
+                  </Center>
+                </section>
+              }
+            />*/}
+          </Routes>
+          <Footer />
+        </StoreProvider>
+      </Router>
     </ApolloProvider>
   );
 }

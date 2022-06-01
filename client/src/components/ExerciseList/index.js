@@ -30,8 +30,10 @@ import Auth from "../../utils/auth";
 import { useStoreContext } from "../../utils/state/UserContext";
 import { SAVE_EXERCISES } from "../../utils/state/actions";
 
+// Exercise Component in the Home Page
+
 const ExerciseHome = ({ exercise }) => {
-  const { _id, title, image, text } = exercise;
+  const { _id, exerciseTitle, image, exerciseDescription } = exercise;
 
   const [state, dispatch] = useStoreContext();
 
@@ -100,11 +102,11 @@ const ExerciseHome = ({ exercise }) => {
         borderRadius="full"
         width="300px"
         height="300px"
-        bgImg={required(`../../assets/${image}`)}
+        bgImg={require(`../../assets/${image}`)}
         cursor="pointer"
       >
-        <Text className="exercise-text" fontSize="2xl">
-          {title}
+        <Text className="exercise-description" fontSize="2xl">
+          {exerciseTitle}
         </Text>
         <Modal
           initialFocusRef={initialRef}
@@ -114,9 +116,9 @@ const ExerciseHome = ({ exercise }) => {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>{title}</ModalHeader>
+            <ModalHeader>{exerciseTitle}</ModalHeader>
             <ModalCloseButton />
-            <ModalBody>{text}</ModalBody>
+            <ModalBody>{exerciseDescription}</ModalBody>
             <ModalFooter>
               <Button
                 isDisabled={
@@ -141,9 +143,9 @@ const ExerciseHome = ({ exercise }) => {
 };
 
 const ExerciseDash = ({ exercise }) => {
-  const { _id, title, text } = exercise;
+  const { _id, exerciseTitle, exerciseDescription } = exercise;
 
-  const { isOpen: exerciseOpen, onToggle: toggleExerciseText } =
+  const { isOpen: exerciseOpen, onToggle: toggleExerciseDescription } =
     useDisclosure();
 
   const toast = useToast();
@@ -167,7 +169,7 @@ const ExerciseDash = ({ exercise }) => {
         position: "top-right",
       });
 
-      onClose();
+      //onClose();
     } catch (err) {
       console.log(err);
       toast({
@@ -186,7 +188,7 @@ const ExerciseDash = ({ exercise }) => {
       return;
     }
 
-    toggleExerciseText();
+    toggleExerciseDescription();
   };
 
   return (
@@ -215,7 +217,7 @@ const ExerciseDash = ({ exercise }) => {
           />
         </Flex>
         <Heading color="#285E61" size="lg" onClick={exerciseClickHandler}>
-          {title}
+          {exerciseTitle}
         </Heading>
       </Box>
 
@@ -238,7 +240,7 @@ const ExerciseDash = ({ exercise }) => {
             size="md"
             mt="-5"
             ml="-3"
-            onClick={toggleActivityText}
+            onClick={toggleExerciseDescription}
             icon={<ArrowUpIcon />}
             variant="ghost"
             colorScheme="teal"
@@ -246,7 +248,7 @@ const ExerciseDash = ({ exercise }) => {
             fontSize="xl"
             arial-label="Close Reflections"
           />
-          <Text overflow="auto">{text}</Text>
+          <Text overflow="auto">{exerciseDescription}</Text>
         </Flex>
       </Collapse>
     </Box>

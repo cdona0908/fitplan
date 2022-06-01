@@ -23,5 +23,8 @@
   "homepage": "https://github.com/cdona0908/fitplan#readme",
   "devDependencies": {
     "concurrently": "^7.2.1"
+  },
+  "dependencies": {
+    "@fontsource/truculenta": "^4.5.4"
   }
 }
