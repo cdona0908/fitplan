@@ -4,7 +4,7 @@ const workoutSchema = require('./Workout')
 
 const routineSchema = new Schema(
     {
-        routineName: {
+        name: {
             type: String,
             required: 'Please give your routine a name!',
             minlength: 1,

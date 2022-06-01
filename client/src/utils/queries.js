@@ -31,7 +31,7 @@ export const QUERY_USER = gql`
               }
             }
             routines {
-              routineName
+              name
               createdAt
               workouts {
                 _id
@@ -61,7 +61,7 @@ export const QUERY_ME = gql`
           
             routines {
                 _id
-                routineName
+                name
                 createdAt
                 workouts {
                     _id

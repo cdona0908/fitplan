@@ -65,14 +65,14 @@ export const REMOVE_EXERCISE = gql`
 `;
 
 export const ADD_ROUTINE = gql`
-  mutation addRoutine($routineName: String!) {
-    addRoutine(routineName: $routineName) {
+  mutation addRoutine($name: String!) {
+    addRoutine(name: $name) {
       _id
       username
       email
       routines {
         _id
-        routineName
+        name
         createdAt
         workouts {
           _id
@@ -91,7 +91,7 @@ export const ADD_ROUTINE = gql`
 export const ADD_WORKOUT = gql`
   mutation addWorkout($routineId: ID!, $workoutName: String!, $weight: Int, $sets: Int, $reps: Int, $time: Int) {
     addWorkout(routineId: $routineId, workoutName: $workoutName, weight: $weight, sets: $sets, reps: $reps, time: $time) {
-      routineName
+      name
       _id
       createdAt
       workouts {

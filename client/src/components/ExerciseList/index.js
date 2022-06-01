@@ -98,7 +98,7 @@ const ExerciseHome = ({exercise}) => {
     return (
         <WrapItem p={10}>
             <Circle 
-            className=''
+            className='exercises'
             onClick={onOpen}
             borderRadius='full'
             width='300px'

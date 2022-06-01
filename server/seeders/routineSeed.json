@@ -1,19 +1,19 @@
 [
     {
-        "routineName": "Day 1"          
+        "name": "Day 1"          
     },
     {
-        "routineName": "Monday"
+        "name": "Monday"
         
     },
     {
-        "routineName": "Tuesday"
+        "name": "Tuesday"
     },
     {
-        "routineName": "Best Routine"
+        "name": "Best Routine"
     },
     {
-        "routineName": "First Routine"
+        "name": "First Routine"
     }    
 
 ]
