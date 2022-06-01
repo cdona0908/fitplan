@@ -2,13 +2,13 @@
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/client';
 import {Link} from 'react-router-dom';
-import {LOGIN} from '../utils/mutations';
+import {LOGIN_USER} from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function Login(props) {
     // set the initial form state
     const [formState, setformState] = useState({email: '', password: ''});
-    const [login, {error}] = useMutation(LOGIN);
+    const [login, {error}] = useMutation(LOGIN_USER);
 
     //setting up function that use a preventDefault that prevents an event for happening and also validates what the users is adding on the input field
     const handleFormSubmit = async (event) => {
@@ -44,7 +44,7 @@ function Login(props) {
                 <div className='flex-row space-between my-2'>
                     <label htmlFor='email'>Email:</label>
                     <input 
-                      placeholder='youremail@test.com'
+                      placeholder='addyouremail@test.com'
                       name='email'
                       type= 'email'
                       id= 'email'
