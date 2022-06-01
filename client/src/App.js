@@ -15,8 +15,9 @@ import Footer from "./components/Footer";
 //import pages
 //import Dashboard from '../src/pages/Dashboard';
 import Home from "./pages/Home";
+import Dashboard from "../src/pages/Dashboard";
 import { StoreProvider } from "./utils/state/UserContext";
-//chakta imports
+//chakra imports
 import { Center, Text } from "@chakra-ui/react";
 
 //function from Apollo Client that will retrieve the token from localStorage
@@ -50,9 +51,9 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            {/* <Route path="dashboard" element={<Dashboard />}></Route>             */}
+            <Route path="dashboard" element={<Dashboard />}></Route>
             {/* catch any routes that are not listed above and return this */}
-            {/* <Route
+            <Route
               path="*"
               element={
                 <section>
@@ -61,7 +62,7 @@ function App() {
                   </Center>
                 </section>
               }
-            />*/}
+            />
           </Routes>
           <Footer />
         </StoreProvider>
