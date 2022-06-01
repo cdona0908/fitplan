@@ -2,16 +2,12 @@ import React from 'react';
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 //import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 //import components
 import Header from './components/Header';
 import Footer from './components/Footer';
-
 //import pages
-
 //function from Apollo Client that will retrieve the token from localStorage
 import { setContext } from '@apollo/client/link/context';
-
 // function to retrieve the token from localStorage and set the HTTP request headers of every request to include the token
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -22,28 +18,23 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
-
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
 function App() {
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <div className="container">
-          
         </div>
         <Footer />
       </div>
-    </ApolloProvider>    
+    </ApolloProvider>
   );
 }
-
 export default App;
