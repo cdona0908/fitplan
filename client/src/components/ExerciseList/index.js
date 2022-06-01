@@ -143,7 +143,7 @@ const ExerciseHome = ({exercise}) => {
     );
 };
 
-
+//Exercise Component for User Dashboard
 
 const ExerciseDash = ({exercise}) => {
     const {_id, exerciseTitle, exerciseDescription} = exercise;

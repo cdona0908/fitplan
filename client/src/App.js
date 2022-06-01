@@ -8,7 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 //import pages
-//import Dashboard from '../src/pages/Dashboard';
+import Dashboard from '../src/pages/Dashboard';
 import Home from './pages/Home';
 import { StoreProvider } from './utils/state/UserContext';
 //chakta imports
@@ -45,9 +45,9 @@ function App() {
           <Header />
            <Routes> 
             <Route path="/" element={<Home />}></Route> 
-            {/* <Route path="dashboard" element={<Dashboard />}></Route>             */}
+            <Route path="dashboard" element={<Dashboard />}></Route>            
             {/* catch any routes that are not listed above and return this */}
-            {/* <Route
+            <Route
               path="*"
               element={
                 <section>
@@ -56,7 +56,7 @@ function App() {
                   </Center>
                 </section>
               }
-            />*/}
+            />
           </Routes> 
           <Footer />
         </StoreProvider>

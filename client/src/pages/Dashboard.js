@@ -1,6 +1,6 @@
 // Importing the parameters that we are going to used to implement the function
 import React, {useEffect, useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {
     Box,
     Center,
@@ -15,15 +15,14 @@ import {
     Divider,
     Flex
 } from '@chakra-ui/react';
-import {useMutation, useQuery} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import {QUERY_ME} from '../utils/queries';
 import RoutineForm from '../components/RoutineForm';
-import {ExerciseDash} from '../components/Exercise';
+import {ExerciseDash} from '../components/ExerciseList';
 import RoutineList from '../components/RoutineList';
-import {COMPLETE_ROUTINE} from '../utils/mutations';
 
-import {useStoreContext} from '../utils/state/actions';
-import {ADD_ROUTINES, ADD_EXERCISES} from '../utils/state/actions';
+import {useStoreContext} from '../utils/state/UserContext';
+import {ADD_ROUTINES, SAVE_EXERCISES} from '../utils/state/actions';
 
 const Dashboard = () => {
     const [state, dispatch] = useStoreContext();
@@ -31,24 +30,18 @@ const Dashboard = () => {
     const[userRoutines, setRoutines] = useState([]);
     const [userExercises, setExercises] = useState([]);
 
-    const navigate = useNavigate();
-    //query function
+    
+    //query me function
     const {loading, error, data: userData} = useQuery(QUERY_ME);
 
-    // completing the routine mutation
-    const [completeRoutine] = useMutation(COMPLETE_ROUTINE);
-
+   
     //destructuring global variables
     const {routines, exercises} = state;
 
-    // using useffect function for routines and exercises"
+    // if global store exists for routines and exercises, use that
     useEffect(() => {
         if (routines.length) {
-            setRoutines(
-                routines.filter((routine) => {
-                    return !routine.isComplete;
-                })
-            )
+            setRoutines(routines);            
         }
         if (exercises) {
             setExercises(exercises);
@@ -63,15 +56,13 @@ const Dashboard = () => {
                 routines: userData.me.routines
             });
             dispatch({
-                type: ADD_EXERCISES,
+                type: SAVE_EXERCISES,
                 exercises: userData.me.exercises
             })
         }
-    }, [userData.dispatch]);
+    }, [userData, dispatch]);
 
-    const handleViewCompletedRoutines = () => {
-        navigate('/completed-routines');
-    };
+   
 
     if (error) {
         let errorMessage = error.graphQLErrors[0].message;
@@ -106,7 +97,7 @@ const Dashboard = () => {
     }
 
     if(loading) {
-        return <di>Loading your Dashboard</di>
+        return <div>Loading your Dashboard</div>
     }
 
     return (
@@ -166,8 +157,8 @@ const Dashboard = () => {
                 minHeight='100%' 
                 variant='solid'
                 bg='#234E52'
-            />
-        </Center>
+                />
+            </Center>
 
         <Box w={{base: '80%', md:'50%'}} minHeight='84.7vh'>
             <Heading 
@@ -176,18 +167,14 @@ const Dashboard = () => {
                 color='#285E61'
                 mt='20px'>
                 My routines
-                </Heading>
-                <Center>
-                    <ButtonGroup isAtached mt='3'>
-                        <RoutineForm />
-                        <Button 
-                            onClick={handleViewCompletedRoutines}
-                            colorScheme='teal'
-                            size='md'>
-                            Completed Routines
-                        </Button>
-                    </ButtonGroup>
-                </Center>
+            </Heading>
+            <Center>
+          <ButtonGroup isAttached mt="3">
+            <RoutineForm />
+            
+          </ButtonGroup>
+        </Center>
+                
                 {userRoutines.length=== 0 ? (
                     <ScaleFade in>
                         <Box m='30px'>
@@ -217,7 +204,7 @@ const Dashboard = () => {
                             <RoutineList
                                 key={routine.id}
                                 routine={routine}
-                                completeRoutine={completeRoutine}
+                                
                             />
                         );
 
