@@ -1,29 +1,27 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import {QUERY_EXERCISES} from '../utils/queries';
-import ExerciseList from '../components/ExcerciseList'
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_EXERCISES } from "../utils/queries";
+import ExerciseList from "../components/ExerciseList";
 
 const Home = () => {
-
-   // use useQuery hook to make query request
-   const { loading, data } = useQuery(QUERY_EXERCISES);
-   if (loading) {
+  // use useQuery hook to make query request
+  const { loading, data } = useQuery(QUERY_EXERCISES);
+  if (loading) {
     return <div>loading Exercises...</div>;
   }
-   const exercises = data?.exercises || [];
-   console.log(exercises);
+  const exercises = data?.exercises || [];
+  console.log(exercises);
 
   return (
     <main>
-      <div className='flex-row justify-space-between'>
-        <div className='col-12 mb-3'>
-        {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <ExerciseList exercises={exercises} title="Exercises..." />
-      )
-
-        }</div>
+      <div className="flex-row justify-space-between">
+        <div className="col-12 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <ExerciseList exercises={exercises} title="Exercises..." />
+          )}
+        </div>
       </div>
     </main>
   );
