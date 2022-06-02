@@ -1,4 +1,4 @@
-# fitplan
+# Fitplan
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -41,6 +41,8 @@ Once the application is connected to the server, the user will be able to create
 ## Links
 
 Deployed application:
+
+https://mysterious-scrubland-29825.herokuapp.com/
 
 ## Technologies
 
