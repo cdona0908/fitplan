@@ -51,8 +51,8 @@ const ExerciseHome = ({exercise}) => {
         //validating user login
         if (!Auth.loggedIn()) {
             toast({
-                title: '',
-                description: '',
+                title: 'Not logged in!',
+                description: 'Please log in to save this activity',
                 status: 'error',
                 duration: '',
                 isClosable: true,
@@ -105,7 +105,7 @@ const ExerciseHome = ({exercise}) => {
             height='300px'
             bgImg={require(`../../assets/${image}`)}
             cursor='pointer'>
-            <Text className='exercise-description' fontSize='2xl'>
+            <Text className='exercise-description' fontSize='2xl' bg="#FFCC00" >
                 {exerciseTitle}
             </Text>
             <Modal

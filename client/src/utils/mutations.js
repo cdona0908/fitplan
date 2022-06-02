@@ -25,9 +25,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const SAVE_EXERCISE = gql `
-  mutation saveExercise($_id:ID!) {
-    
-    saveExercise(_id: $_id) {
+  mutation saveExercise($id: ID!) {    
+    saveExercise(_id: $id) {
       _id
       username
       email      
@@ -46,8 +45,8 @@ export const SAVE_EXERCISE = gql `
 `;
 
 export const REMOVE_EXERCISE = gql`
-  mutation removeExercise($_id:ID!) {
-    removeExercise(_id: $_id) {
+  mutation removeExercise($id:ID!) {
+    removeExercise(_id: $id) {
       _id
       username
       exercises {

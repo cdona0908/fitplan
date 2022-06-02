@@ -39,7 +39,7 @@ const Header = () => {
               <Image
                 ml="2"
                 width="100px"
-                height="85px"
+                height="100px"
                 objectFit="cover"
                 src={require('../../assets/logo.png')}
                 alt="fitplan logo"
