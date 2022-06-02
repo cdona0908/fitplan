@@ -15,7 +15,7 @@ import RoutineWorkouts from "./workouts";
 const RoutineList = ({ routine, completed = false, reuseRoutine }) => {
   const { _id, name, description, createdAt, workouts } = routine;
 
-  // set useDisclosure function to custom names
+  // sets this function to names that are custom
   const { isOpen: workoutOpen, onToggle: toggleWorkouts } = useDisclosure();
 
   return (

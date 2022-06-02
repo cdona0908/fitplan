@@ -11,20 +11,20 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 
-// to redirect user to Dashboard if button is clicked while user is logged in.
+// redirects user to dashboard if logged in
 import { useNavigate } from 'react-router-dom';
 
-// import login from Login.js
+// imports the login form from Login.js
 import LoginForm from './Login';
 
-// import SignupForm from SignupForm.js
+// imports the signup form from Signup.js
 import SignupForm from './Signup';
 
-// import logout() from Auth.js
+// import from Auth.js
 import Auth from '../../utils/auth';
 
 const Header = () => {
-  // useNavigate to redirect user to Dashboard using onClick
+  // redirects user to dashboard
   const navigate = useNavigate();
 
   const variant = useBreakpointValue({ base: 'sm', md: 'big' });

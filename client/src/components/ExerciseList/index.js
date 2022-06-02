@@ -1,4 +1,3 @@
-// Importing the parameters that we are going to used to implement the function
 import React from "react";
 import {
     Modal,
@@ -26,7 +25,7 @@ import {SAVE_EXERCISE, REMOVE_EXERCISE} from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import {useStoreContext} from '../../utils/state/UserContext';
 import {SAVE_EXERCISES} from '../../utils/state/actions';
-// Exercise Component in the Home Page
+// Exercise Component in the Homepage
 const ExerciseHome = ({exercise}) => {
     const {_id, exerciseTitle, image, exerciseDescription} = exercise;
     const[state, dispatch] = useStoreContext();
@@ -35,9 +34,9 @@ const ExerciseHome = ({exercise}) => {
     const initialRef = React.useRef();
     const finalRef = React.useRef();
     const [saveExercise] = useMutation(SAVE_EXERCISE);
-    // if user clicks it add the exercise to homepage
+    // if user clicks it, it adds the exercise to homepage
     const handleHomeClick = async () => {
-        //validating user login
+        //validation for the login
         if (!Auth.loggedIn()) {
             toast({
                 title: 'Not logged in!',

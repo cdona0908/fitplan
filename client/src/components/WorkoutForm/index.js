@@ -25,7 +25,7 @@ export const WorkoutForm = ({ routineId }) => {
   const toast = useToast();
   // add workout mutation
   const [addWorkout] = useMutation(ADD_WORKOUT);
-  // styling components
+  // style componenets
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef();
   const finalRef = React.useRef();
@@ -33,11 +33,10 @@ export const WorkoutForm = ({ routineId }) => {
     <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
   );
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
-  // on form change
+  // form change handler on form change
   const changeHandler = (event) => {
     const { name, value } = event.target;
-    console.log("value", value);
-    // update progress bar
+
     // add input to workoutState
     setWorkoutState({
       ...workoutState,
@@ -45,19 +44,19 @@ export const WorkoutForm = ({ routineId }) => {
     });
   };
 
-  // on form submit
+  // form submitHandler
   const submitHandler = async () => {
-    // validate description
+    // validation
     if (!workoutState) {
       setErrorText("Please describe your workout");
       return;
     }
-    // validate length
+    // validation for the length
     if (workoutState.length > 280) {
       setErrorText("The description cannot be over 280 characters");
       return;
     }
-    // add workoutState to mutation
+    // helps add workoutState to the mutation
     try {
       await addWorkout({
         variables: {
@@ -69,9 +68,9 @@ export const WorkoutForm = ({ routineId }) => {
           time: parseInt(workoutState.time),
         },
       });
-      // reset workoutState
+      // resets workoutState
       setWorkoutState("");
-      // reset errorText
+      // resets errorText
       setErrorText("");
       toast({
         title: "Workout added!",

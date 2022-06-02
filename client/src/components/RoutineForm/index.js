@@ -20,7 +20,7 @@ import {
   useDisclosure,
   FormErrorMessage,
   useToast,
-  Progress,
+
   ModalCloseButton
 } from '@chakra-ui/react';
 import { SmallAddIcon } from '@chakra-ui/icons';
@@ -31,35 +31,24 @@ const RoutineForm = () => {
   const initialRef = React.useRef();
   const finalRef = React.useRef();
 
-  // use toast from Chakra UI
+  // used from Chakra
   const toast = useToast();
 
-  // global state declaration (only using reducer)
+  // a global state which only uses reducer
   const [, dispatch] = useStoreContext();
 
-  // state of routine Form
+  // state for routine form
   const [routineState, setRoutineState] = useState({ name: '' });
-  // error text state
-  const [errorMessage, setError] = useState({ type: '', message: '' });
-  // set character lengths
-  const [nameLength, setNameLength] = useState(0);
-  const [descriptionLength, setDescriptionLength] = useState(0);
 
-  // add routine mutation setup
+  // error for text
+  const [errorMessage, setError] = useState({ type: '', message: '' });
+
+  // routine mutation
   const [addRoutine] = useMutation(ADD_ROUTINE);
 
-  // update routineState when user adds things in input
+  // updates routineState when user enters input data
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    // set progress bar length
-    if (name === 'name') {
-      let progressLength = (value.length / 280) * 100;
-      setNameLength(progressLength);
-    } else {
-      let progressLength = (value.length / 280) * 100;
-      setDescriptionLength(progressLength);
-    }
 
     // add input to setRoutineState
     setRoutineState({
@@ -71,13 +60,13 @@ const RoutineForm = () => {
   const handleFormSubmit = async () => {
     const { name } = routineState;
 
-    // validate name
+    // validates name
     if (!name) {
       setError({ type: 'name', message: `Please enter your routine name` });
 
       return;
     }
-    // validate name length
+    // validates name length
     if (name.length > 280) {
       setError({
         type: 'name',
@@ -87,7 +76,7 @@ const RoutineForm = () => {
       return;
     }
 
-    // add routineState to mutation
+    // routineState added to mutation
     try {
       const response = await addRoutine({
         variables: {
@@ -97,18 +86,19 @@ const RoutineForm = () => {
 
       console.log(response);
 
-      // add to global state
+      // this is now added to the global state
       dispatch({
         type: ADD_ROUTINES,
         routines: response.data.addRoutine.routines
       });
 
-      // reset  routine State
+      // reset
       setRoutineState({ name: '' });
-      // reset errorMessage
+
+      // reset 
       setError({ type: '', message: '' });
 
-      // success toast
+      // success message
       toast({
         title: 'Routine added!',
         status: 'success',
@@ -165,17 +155,7 @@ const RoutineForm = () => {
                 onChange={handleChange}
                 value={routineState.name}
               />
-              <Progress
-                colorScheme={nameLength >= 100 ? 'red' : 'green'}
-                size="sm"
-                value={nameLength}
-              />
               <FormErrorMessage>{errorMessage.message}</FormErrorMessage>
-              <Progress
-                colorScheme={descriptionLength >= 100 ? 'red' : 'green'}
-                size="sm"
-                value={descriptionLength}
-              />
               <FormErrorMessage>{errorMessage.message}</FormErrorMessage>
             </FormControl>
           </ModalBody>

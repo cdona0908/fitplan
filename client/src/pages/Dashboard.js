@@ -27,10 +27,9 @@ const Dashboard = () => {
   const [userExercises, setExercises] = useState([]);
   //query function
   const { loading, error, data: userData } = useQuery(QUERY_ME);
-  //destructuring global variables
 
   const { routines, exercises } = state;
-  // using useffect function for routines and exercises"
+  // this function is being used for the exercises and routines
   useEffect(() => {
     if (routines.length) {
       setRoutines(
@@ -43,7 +42,7 @@ const Dashboard = () => {
       setExercises(exercises);
     }
   }, [routines, exercises]);
-  // if not complete global store with user info
+  // uses global store data
   useEffect(() => {
     if (userData) {
       dispatch({

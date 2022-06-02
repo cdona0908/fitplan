@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 import { useNavigate } from 'react-router-dom';
 
-// Imports from @chakra-ui/react to assist with Modal and form styling.
+// Imported from Chakra
 import {
   Button,
   FormControl,
@@ -26,18 +25,19 @@ import {
 } from '@chakra-ui/react';
 
 function SignupForm() {
-  // Importing functions from @chakra-ui/react for when Modal isOpn, onOpen, onClose as useDisclosure
+  // Imports for the modal from Chakra UI
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // useNavigate to redirect user after signup to Dashboard
+  // redirects after signing up to the dashboard
   const navigate = useNavigate();
 
-  // useToast from Chakra-UI for success message
+  // Utilized for success messaging
   const toast = useToast();
 
-  // initialRef is where the cursor loads upon Modal opening for the user
+  // initialRef loads cursor when the modal opens
   const initialRef = React.useRef();
-  // finalRef is the last input field for user before submit or cancel button
+
+  // finalRef is the final input for  the user before submittion 
   const finalRef = React.useRef();
 
   // Setting form state by using state for already registered users with username email and password fields.
@@ -49,14 +49,14 @@ function SignupForm() {
 
   const [errorMessage, setError] = useState({ type: '', message: '' });
 
-  // Using mutation addUser to pull necessary registration fields we use in handleFormSubmit()
+  // mutation for addUser to get fields from handleFormSubmit()
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const { username, email, password } = formState;
 
-    // validate input
+    // input validations
     if (!username) {
       setError({ type: 'username', message: 'Username is required' });
       return;
@@ -77,7 +77,7 @@ function SignupForm() {
       return;
     }
 
-    // The block of code to be tested for errors while the program is being executed is written in the try block
+    // error testing
     try {
       const mutationResponse = await addUser({
         variables: {
@@ -86,14 +86,14 @@ function SignupForm() {
           password: password
         }
       });
-      // Using Auth.js imported at the top, the user's credentials are verified with their JWT
+      // users credentials are verified with JWT in auth.js
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
 
-      // reset SignupForm
+      //  this resets the Signup Form
       setFormState({ email: '', password: '' });
 
-      // success toast
+      // success message
       toast({
         title: 'Account created.',
         position: 'top-right',
@@ -103,17 +103,16 @@ function SignupForm() {
         isClosable: true
       });
 
-      // Close modal
+      // Closes the modal
       onClose();
 
-      // Redirect user to dashboard view
+      // directs the user to the dahsboard
       navigate('/dashboard', { replace: true });
     } catch (e) {
-      // if errors are presented, use catch to console.log(e)
+      // show errors on the console
       console.log(e);
 
-      // display error toast
-      // render specific message based on what the error contains
+      // creates error messages
       let errorMessage = 'We could not create an account for you.';
       if (e.message.includes('username')) {
         errorMessage = 'That username is already being used.';
@@ -124,7 +123,7 @@ function SignupForm() {
       if (e.message.includes('email' && 'match')) {
         errorMessage = 'Not a valid email address.';
       }
-      // error toast
+      // error message display
       toast({
         title: 'Error!',
         position: 'top-right',
@@ -148,7 +147,7 @@ function SignupForm() {
     });
   };
 
-  // Create a password input with a show/hide password functionality
+  // can show and hide the password
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 

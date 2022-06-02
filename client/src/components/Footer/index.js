@@ -1,5 +1,7 @@
 import React from "react";
+// imports used from Chakra UI
 import { Box, Center, Text } from "@chakra-ui/react";
+
 const Footer = () => {
   return (
     <div className="wrapper">
@@ -19,4 +21,5 @@ const Footer = () => {
     </div>
   );
 };
+
 export default Footer;
