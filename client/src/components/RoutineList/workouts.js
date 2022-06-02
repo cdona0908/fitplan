@@ -15,17 +15,17 @@ const RoutineWorkouts = ({ workoutOpen, workouts, toggleWorkouts, name }) => {
   return (
     <Collapse in={workoutOpen} animateOpacity>
       <Flex
-        p="40px"
-        color="white"
-        ml="2"
-        mr="2"
-        bg="pink.300"
+        p="20px"
+        color="stone.900"
+        ml="0"
+        mr="12"
+        bg="gray.400"
         rounded="md"
         shadow="md"
         flexDir="column"
       >
-        <Flex flexDir="row" justifyContent="space-between" mb="10px">
-          <Heading>{name} Workouts</Heading>
+        <Flex flexDir="row" justifyContent="space-between" mb="20px">
+          <Heading> {name} Workouts</Heading>
           <IconButton
             size="md"
             mt="-5"
@@ -50,7 +50,7 @@ const RoutineWorkouts = ({ workoutOpen, workouts, toggleWorkouts, name }) => {
           <List>
             {workouts.map((workout) => {
               return (
-                <ListItem key={workout._id} mb="5px">
+                <ListItem key={workout._id} mb="10px">
                   <ListIcon as={ChevronRightIcon} mb="1px" mr="5px"></ListIcon>
                   Workout Name: {workout.workoutName} Weight: {workout.weight}{" "}
                   Sets: {workout.sets} Reps: {workout.reps} Time: {workout.time}

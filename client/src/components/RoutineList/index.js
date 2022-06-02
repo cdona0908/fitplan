@@ -24,14 +24,14 @@ const RoutineList = ({ routine, completed = false, reuseRoutine }) => {
         border="2px"
         p="3"
         borderRadius="md"
-        borderColor="gray.200"
-        bgColor="teal.50"
+        borderColor="gray.400"
+        bgColor="rgb(186 230 253)"
       >
         <Flex
           justifyContent={{ base: "normal", md: "end" }}
           mb={{ base: "normal", md: "-6" }}
         ></Flex>
-        <Heading fontSize="3xl" color="#285E61" ml="5" mt="5">
+        <Heading fontSize="3xl" color="stone.900" ml="3" mt="5">
           {name}
         </Heading>
         <Box
@@ -43,10 +43,10 @@ const RoutineList = ({ routine, completed = false, reuseRoutine }) => {
           borderColor="gray.400"
           minHeight="20"
           boxShadow="lg"
-          bgColor="teal.100"
+          bgColor="rgb(125 211 252)"
         >
-          <Text m="2">{description}</Text>
-          <Flex justifyContent="end">
+          <Text m="3">{description}</Text>
+          <Flex justifyContent="center">
             <Text m="2">{createdAt}</Text>
           </Flex>
         </Box>

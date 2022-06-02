@@ -178,7 +178,7 @@ export const WorkoutForm = ({ routineId }) => {
           <ModalFooter>
             <Button
               mr={3}
-              colorScheme="teal"
+              colorScheme="blue"
               type="submit"
               onClick={submitHandler}
             >

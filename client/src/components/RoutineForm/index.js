@@ -144,7 +144,7 @@ const RoutineForm = () => {
         leftIcon={<SmallAddIcon />}
         onClick={onOpen}
         size="md"
-        colorScheme="teal">
+        colorScheme="red">
         Add Routine
       </Button>
       <Modal
@@ -183,7 +183,7 @@ const RoutineForm = () => {
             <Button
               onClick={handleFormSubmit}
               mr={3}
-              colorScheme="teal"
+              colorScheme="blue"
               // isLoading={props.isSubmitting}
               type="submit">
               Save

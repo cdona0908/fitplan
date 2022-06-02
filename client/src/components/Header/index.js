@@ -65,14 +65,14 @@ const Header = () => {
                       onClick={() => navigate('/')}
                       color="#000000"
                       variant="ghost"
-                      _hover={{ bg: 'teal.300' }}>
+                      _hover={{ bg: 'gray.400' }}>
                       Homepage
                     </Button>
                     <Button
                       onClick={Auth.logout}
                       color="#000000"
                       variant="ghost"
-                      _hover={{ bg: 'teal.300' }}>
+                      _hover={{ bg: 'gray.400' }}>
                       Logout{' '}
                     </Button>
                   </>
@@ -82,14 +82,14 @@ const Header = () => {
                       onClick={() => navigate('/dashboard')}
                       color="#000000"
                       variant="ghost"
-                      _hover={{ bg: 'teal.300' }}>
+                      _hover={{ bg: 'gray.400' }}>
                       My Dashboard
                     </Button>
                     <Button
                       onClick={Auth.logout}
                       color="#000000"
                       variant="ghost"
-                      _hover={{ bg: 'teal.300' }}>
+                      _hover={{ bg: 'gray.400' }}>
                       Logout{' '}
                     </Button>
                   </>

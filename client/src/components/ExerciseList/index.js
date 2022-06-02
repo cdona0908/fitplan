@@ -89,7 +89,7 @@ const ExerciseHome = ({exercise}) => {
             height='300px'
             bgImg={require(`../../assets/${image}`)}
             cursor='pointer'>
-            <Button className='exercise-description' fontSize='1xl' bg="#FFCC00"_hover={{ bg: 'teal.300' }}>
+            <Button className='exercise-description' fontSize='1xl' bg="#FFCC00"_hover={{ bg: 'gray.400' }}>
                 {exerciseTitle}
             </Button>
             <Modal
@@ -168,7 +168,7 @@ return (
         <Box
             onClick={exerciseClickHandler}
             borderRadius='lg'
-            bg='teal.100'
+            bg='rgb(186 230 253)'
             borderColor='gray.200'
             border='1px'
             maxWidth='100%'
@@ -180,14 +180,14 @@ return (
                 onClick={removeExerciseHandler}
                 variant='outline'
                 aria-label='remove exercise'
-                colorScheme='teal'
-                color='#285E61'
+                colorScheme='red'
+                color='red'
                 width='10px'
                 size='sm'
                 icon={<SmallCloseIcon/>}
             />
             </Flex>
-            <Heading color='#285E61' size='lg' onClick={exerciseClickHandler}>
+            <Heading color='stone.900' size='lg' onClick={exerciseClickHandler}>
                 {exerciseTitle}
             </Heading>
         </Box>
@@ -196,11 +196,11 @@ return (
             <Flex
                 maxHeight='200px'
                 p='30px'
-                color='#285E61'
+                color='stone.900'
                 borderColor='gray.200'
                 ml='2'
                 mr='2'
-                bg='teal.50'
+                bg='rgb(125 211 252)'
                 rounded='md'
                 shadow='md'
                 justifyContent='center'
