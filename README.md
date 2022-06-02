@@ -22,7 +22,7 @@ Homepage:
 
 ## Usage
 
-Once the application is connected to the server, the user will be able to create an account and log into it. the user will be able to save exercises, add routines, and add workouts.
+Once the application is connected to the server, the user will be able to create an account and log into it. The user will be able to save exercises, add routines, and add workouts.
 
 ## Links
 
