@@ -36,12 +36,12 @@ const Header = () => {
         <Flex minWidth="max-content" alignItems="center" gap="2" bg="#FFCC00">
           <Link to="/">
             <Box>
-              <Image
+            <Image
                 ml="2"
                 width="100px"
                 height="85px"
                 objectFit="cover"
-                src={require('../../assets/logo.png')}
+                src={require('../../assets/fit-logo.png')}
                 alt="fitplan logo"
               />
             </Box>

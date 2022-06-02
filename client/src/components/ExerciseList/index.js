@@ -21,38 +21,27 @@ import {
     Heading
 } from '@chakra-ui/react';
 import {SmallCloseIcon, ArrowUpIcon} from '@chakra-ui/icons';
-
 import {useMutation} from '@apollo/client';
 import {SAVE_EXERCISE, REMOVE_EXERCISE} from '../../utils/mutations';
-
 import Auth from '../../utils/auth';
-
 import {useStoreContext} from '../../utils/state/UserContext';
 import {SAVE_EXERCISES} from '../../utils/state/actions';
-
 // Exercise Component in the Home Page
-
 const ExerciseHome = ({exercise}) => {
     const {_id, exerciseTitle, image, exerciseDescription} = exercise;
-
     const[state, dispatch] = useStoreContext();
-
     const toast = useToast();
-
     const {isOpen, onOpen, onClose} = useDisclosure();
-
     const initialRef = React.useRef();
     const finalRef = React.useRef();
-
     const [saveExercise] = useMutation(SAVE_EXERCISE);
-
     // if user clicks it add the exercise to homepage
     const handleHomeClick = async () => {
         //validating user login
         if (!Auth.loggedIn()) {
             toast({
-                title: '',
-                description: '',
+                title: 'Not logged in!',
+                description: 'Please log in to save this activity',
                 status: 'error',
                 duration: '',
                 isClosable: true,
@@ -65,12 +54,10 @@ const ExerciseHome = ({exercise}) => {
             const response = await saveExercise({
                 variables: { id: _id }
             });
-      
             dispatch({
                 type: SAVE_EXERCISES,
                 exercises: response.data.saveExercise.exercises
             });
-      
             toast({
                 title: 'Exercise saved!',
                 description: 'To view the exercise, go to your dashboard',
@@ -79,7 +66,6 @@ const ExerciseHome = ({exercise}) => {
                 isClosable: true,
                 position: 'top-right'
             });
-      
             onClose();
         }   catch (err) {
             console.log(err);
@@ -92,12 +78,10 @@ const ExerciseHome = ({exercise}) => {
                 position: 'top-right'
             });
         }
-
     };
-
     return (
         <WrapItem p={10}>
-            <Circle 
+            <Circle
             className='exercises'
             onClick={onOpen}
             borderRadius='full'
@@ -105,9 +89,9 @@ const ExerciseHome = ({exercise}) => {
             height='300px'
             bgImg={require(`../../assets/${image}`)}
             cursor='pointer'>
-            <Text className='exercise-description'  bg='#FFCC00' fontSize='2xl'>
+            <Button className='exercise-description' fontSize='1xl' bg="#FFCC00"_hover={{ bg: 'teal.300' }}>
                 {exerciseTitle}
-            </Text>
+            </Button>
             <Modal
                 initialFocusRef={initialRef}
                 finalFocusRef={finalRef}
@@ -135,25 +119,16 @@ const ExerciseHome = ({exercise}) => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-
         </Circle>
-
     </WrapItem>
-        
     );
 };
-
-
-
+//Exercise Component for User Dashboard
 const ExerciseDash = ({exercise}) => {
     const {_id, exerciseTitle, exerciseDescription} = exercise;
-
     const {isOpen: exerciseOpen, onToggle: toggleExerciseDescription} = useDisclosure();
-
     const toast = useToast();
-
     const [removeExercise] = useMutation(REMOVE_EXERCISE);
-
     // if the remove button is clicked
     const removeExerciseHandler = async (event) => {
         //running the mutation
@@ -161,7 +136,6 @@ const ExerciseDash = ({exercise}) => {
             await removeExercise({
                 variables: {id: _id}
             });
-
             toast({
                 title: 'Exercise removed!',
                 description: 'if you want to added it , go to your dashboard',
@@ -170,7 +144,6 @@ const ExerciseDash = ({exercise}) => {
                 isClosable: true,
                 position: 'top-right'
             });
-      
             //onClose();
         }   catch (err) {
             console.log(err);
@@ -183,21 +156,16 @@ const ExerciseDash = ({exercise}) => {
                 position: 'top-right'
             });
         }
-
     };
-
-
 const exerciseClickHandler = (event) => {
     if (event.target !== event.currentTarget) {
         return
     }
-
     toggleExerciseDescription()
 };
-
 return (
     <Box>
-        <Box 
+        <Box
             onClick={exerciseClickHandler}
             borderRadius='lg'
             bg='teal.100'
@@ -223,10 +191,9 @@ return (
                 {exerciseTitle}
             </Heading>
         </Box>
-
         {/* */}
         <Collapse in={exerciseOpen}>
-            <Flex 
+            <Flex
                 maxHeight='200px'
                 p='30px'
                 color='#285E61'
@@ -238,7 +205,7 @@ return (
                 shadow='md'
                 justifyContent='center'
                 overflow='hidden'>
-                <IconButton 
+                <IconButton
                     size='md'
                     mt='-5'
                     ml='-3'
@@ -255,13 +222,8 @@ return (
             </Collapse>
         </Box>
     );
-
 };
-
 export {ExerciseHome, ExerciseDash};
-
-
-
 
 
     

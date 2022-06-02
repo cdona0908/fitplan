@@ -19,6 +19,8 @@ code {
   box-shadow: 2px 2px 10px #000000;
 }
 
+
+
 .exercises:hover {
   opacity: 100%;
 }
@@ -27,6 +29,13 @@ code {
   text-shadow: 2px 2px 10px #000000;
   color: white;
 }
+
+.exercise-description {
+  border-radius: 40px;
+  
+}
+
+
 
 
 /* --- TEXT STYLING --- */
@@ -72,3 +81,4 @@ margin-top: 20px;
   bottom: -75px;
   opacity:50%;
 }
+
