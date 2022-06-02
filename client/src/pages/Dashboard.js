@@ -1,6 +1,6 @@
 // Importing the parameters that we are going to used to implement the function
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Box,
   Center,
@@ -10,7 +10,6 @@ import {
   AlertTitle,
   AlertDescription,
   ScaleFade,
-  Button,
   ButtonGroup,
   Divider,
   Flex,
@@ -26,7 +25,6 @@ const Dashboard = () => {
   const [state, dispatch] = useStoreContext();
   const [userRoutines, setRoutines] = useState([]);
   const [userExercises, setExercises] = useState([]);
-  const navigate = useNavigate();
   //query function
   const { loading, error, data: userData } = useQuery(QUERY_ME);
   //destructuring global variables
@@ -58,9 +56,6 @@ const Dashboard = () => {
       });
     }
   }, [userData, dispatch]);
-  const handleViewCompletedRoutines = () => {
-    navigate("/completed-routines");
-  };
   if (error) {
     let errorMessage = error.graphQLErrors[0].message;
     return (
@@ -163,18 +158,11 @@ const Dashboard = () => {
           color="#285E61"
           mt="20px"
         >
-          My routines
+          <Center>My routines</Center>
         </Heading>
         <Center>
           <ButtonGroup isAtached mt="3">
             <RoutineForm />
-            <Button
-              onClick={handleViewCompletedRoutines}
-              colorScheme="teal"
-              size="md"
-            >
-              Completed Routines
-            </Button>
           </ButtonGroup>
         </Center>
         {userRoutines.length === 0 ? (

@@ -57,7 +57,7 @@ const RoutineWorkouts = ({
               return (
                 <ListItem key={workout._id} mb="5px">
                   <ListIcon as={ChevronRightIcon} mb="1px" mr="5px"></ListIcon>
-                  {workout.workoutText}
+                  {workout.workoutName}
                 </ListItem>
               );
             })}

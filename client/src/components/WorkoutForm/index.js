@@ -19,7 +19,7 @@ import {
 import { useMutation } from "@apollo/client";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { AddIcon } from "@chakra-ui/icons";
-export const WorkoutForm = ({ routineId }) => {
+export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
   const [workoutState, setWorkoutState] = useState("");
   const [errorText, setErrorText] = useState("");
   const toast = useToast();
@@ -57,7 +57,7 @@ export const WorkoutForm = ({ routineId }) => {
     // add workoutState to mutation
     try {
       await addWorkout({
-        variables: { workoutText: workoutState, routineId: routineId },
+        variables: { workoutName: workoutState, routineId: routineId, weight: weight, sets: sets, reps: reps, time: time },
       });
       // reset workoutState
       setWorkoutState("");

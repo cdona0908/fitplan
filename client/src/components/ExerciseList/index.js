@@ -105,7 +105,7 @@ const ExerciseHome = ({exercise}) => {
             height='300px'
             bgImg={require(`../../assets/${image}`)}
             cursor='pointer'>
-            <Text className='exercise-description' fontSize='2xl'>
+            <Text className='exercise-description'  bg='#FFCC00' fontSize='2xl'>
                 {exerciseTitle}
             </Text>
             <Modal
