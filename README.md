@@ -2,6 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Table of Contents
+
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Links](#links)
+- [Technologies](#technologies)
+- [License](#license)
+- [Contributing](#contributing)
+- [Creators](#creators)
+
 ## Description
 
 This application was built as a fitness routine application that helps one build and create fitness routines with saved exercises.
@@ -12,6 +23,9 @@ If a user has created an account and logged in, then they can save their favorit
 
 Homepage:
 <img width="1436" alt="Screen Shot 2022-06-01 at 5 55 33 PM" src="https://user-images.githubusercontent.com/95589049/171508555-896e3631-d05d-4941-b695-d135fcaa8983.png">
+
+Dashboard:
+<img width="1434" alt="Screen Shot 2022-06-02 at 3 43 46 PM" src="https://user-images.githubusercontent.com/95589049/171725402-d5b424fe-9c04-4774-b041-c41fa8e3806b.png">
 
 ## Installation
 
