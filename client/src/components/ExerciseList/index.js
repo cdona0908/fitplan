@@ -1,267 +1,258 @@
 // Importing the parameters that we are going to used to implement the function
-import React from 'react';
+import React from "react";
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-    Button,
-    Box,
-    Circle,
-    Text,
-    WrapItem,
-    useToast,
-    IconButton,
-    Flex,
-    Collapse,
-    Heading
-} from '@chakra-ui/react';
-import {SmallCloseIcon, ArrowUpIcon} from '@chakra-ui/icons';
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+  Box,
+  Circle,
+  Text,
+  WrapItem,
+  useToast,
+  IconButton,
+  Flex,
+  Collapse,
+  Heading,
+} from "@chakra-ui/react";
+import { SmallCloseIcon, ArrowUpIcon } from "@chakra-ui/icons";
 
-import {useMutation} from '@apollo/client';
-import {SAVE_EXERCISE, REMOVE_EXERCISE} from '../../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { SAVE_EXERCISE, REMOVE_EXERCISE } from "../../utils/mutations";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
-import {useStoreContext} from '../../utils/state/UserContext';
-import {SAVE_EXERCISES} from '../../utils/state/actions';
+import { useStoreContext } from "../../utils/state/UserContext";
+import { SAVE_EXERCISES } from "../../utils/state/actions";
 
 // Exercise Component in the Home Page
 
-const ExerciseHome = ({exercise}) => {
-    const {_id, exerciseTitle, image, exerciseDescription} = exercise;
+const ExerciseHome = ({ exercise }) => {
+  const { _id, exerciseTitle, image, exerciseDescription } = exercise;
 
-    const[state, dispatch] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
 
-    const toast = useToast();
+  const toast = useToast();
 
-    const {isOpen, onOpen, onClose} = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const initialRef = React.useRef();
-    const finalRef = React.useRef();
+  const initialRef = React.useRef();
+  const finalRef = React.useRef();
 
-    const [saveExercise] = useMutation(SAVE_EXERCISE);
+  const [saveExercise] = useMutation(SAVE_EXERCISE);
 
-    // if user clicks it add the exercise to homepage
-    const handleHomeClick = async () => {
-        //validating user login
-        if (!Auth.loggedIn()) {
-            toast({
-                title: '',
-                description: '',
-                status: 'error',
-                duration: '',
-                isClosable: true,
-                position: 'top-right'
-            });
-            return;
-        }
-        // Running the mutation
-        try {
-            const response = await saveExercise({
-                variables: { id: _id }
-            });
-      
-            dispatch({
-                type: SAVE_EXERCISES,
-                exercises: response.data.saveExercise.exercises
-            });
-      
-            toast({
-                title: 'Exercise saved!',
-                description: 'To view the exercise, go to your dashboard',
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
-                position: 'top-right'
-            });
-      
-            onClose();
-        }   catch (err) {
-            console.log(err);
-            toast({
-                title: 'Save exercise failed!',
-                description: 'We could not save this exercise. Please try again.',
-                status: 'error',
-                duration: 3000,
-                isClosable: true,
-                position: 'top-right'
-            });
-        }
+  // if user clicks it add the exercise to homepage
+  const handleHomeClick = async () => {
+    //validating user login
+    if (!Auth.loggedIn()) {
+      toast({
+        title: "",
+        description: "",
+        status: "error",
+        duration: "",
+        isClosable: true,
+        position: "top-right",
+      });
+      return;
+    }
+    // Running the mutation
+    try {
+      const response = await saveExercise({
+        variables: { id: _id },
+      });
 
-    };
+      dispatch({
+        type: SAVE_EXERCISES,
+        exercises: response.data.saveExercise.exercises,
+      });
 
-    return (
-        <WrapItem p={10}>
-            <Circle 
-            className='exercises'
-            onClick={onOpen}
-            borderRadius='full'
-            width='300px'
-            height='300px'
-            bgImg={require(`../../assets/${image}`)}
-            cursor='pointer'>
-            <Text className='exercise-description'  bg='#FFCC00' fontSize='2xl'>
-                {exerciseTitle}
-            </Text>
-            <Modal
-                initialFocusRef={initialRef}
-                finalFocusRef={finalRef}
-                isOpen={isOpen}
-                onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>{exerciseTitle}</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>{exerciseDescription}</ModalBody>
-                    <ModalFooter>
-                        <Button
-                            isDisabled={
-                                state.exercises.find((exercise) => {
-                                    return exercise._id === _id;
-                                })
-                                    ? true
-                                    : false
-                            }
-                            colorScheme="teal"
-                            variant="outline"
-                            onClick={handleHomeClick}>
-                            Save Exercise
-                        </Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
+      toast({
+        title: "Exercise saved!",
+        description: "To view the exercise, go to your dashboard",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
 
-        </Circle>
+      onClose();
+    } catch (err) {
+      console.log(err);
+      toast({
+        title: "Save exercise failed!",
+        description: "We could not save this exercise. Please try again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
+  };
 
+  return (
+    <WrapItem p={10}>
+      <Circle
+        className="exercises"
+        onClick={onOpen}
+        borderRadius="full"
+        width="300px"
+        height="300px"
+        bgImg={require(`../../assets/${image}`)}
+        cursor="pointer"
+      >
+        <Text className="exercise-description" bg="#FFCC00" fontSize="2xl">
+          {exerciseTitle}
+        </Text>
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>{exerciseTitle}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>{exerciseDescription}</ModalBody>
+            <ModalFooter>
+              <Button
+                isDisabled={
+                  state.exercises.find((exercise) => {
+                    return exercise._id === _id;
+                  })
+                    ? true
+                    : false
+                }
+                colorScheme="teal"
+                variant="outline"
+                onClick={handleHomeClick}
+              >
+                Save Exercise
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Circle>
     </WrapItem>
-        
-    );
+  );
 };
 
+const ExerciseDash = ({ exercise }) => {
+  const { _id, exerciseTitle, exerciseDescription } = exercise;
 
+  const { isOpen: exerciseOpen, onToggle: toggleExerciseDescription } =
+    useDisclosure();
 
-const ExerciseDash = ({exercise}) => {
-    const {_id, exerciseTitle, exerciseDescription} = exercise;
+  const toast = useToast();
 
-    const {isOpen: exerciseOpen, onToggle: toggleExerciseDescription} = useDisclosure();
+  const [removeExercise] = useMutation(REMOVE_EXERCISE);
 
-    const toast = useToast();
+  // if the remove button is clicked
+  const removeExerciseHandler = async (event) => {
+    //running the mutation
+    try {
+      await removeExercise({
+        variables: { id: _id },
+      });
 
-    const [removeExercise] = useMutation(REMOVE_EXERCISE);
+      toast({
+        title: "Exercise removed!",
+        description: "if you want to added it , go to your dashboard",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
 
-    // if the remove button is clicked
-    const removeExerciseHandler = async (event) => {
-        //running the mutation
-        try {
-            await removeExercise({
-                variables: {id: _id}
-            });
+      //onClose();
+    } catch (err) {
+      console.log(err);
+      toast({
+        title: "Save exercise failed!",
+        description: "We could not remove this exercise. Please try again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
+  };
 
-            toast({
-                title: 'Exercise removed!',
-                description: 'if you want to added it , go to your dashboard',
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
-                position: 'top-right'
-            });
-      
-            //onClose();
-        }   catch (err) {
-            console.log(err);
-            toast({
-                title: 'Save exercise failed!',
-                description: 'We could not remove this exercise. Please try again.',
-                status: 'error',
-                duration: 3000,
-                isClosable: true,
-                position: 'top-right'
-            });
-        }
-
-    };
-
-
-const exerciseClickHandler = (event) => {
+  const exerciseClickHandler = (event) => {
     if (event.target !== event.currentTarget) {
-        return
+      return;
     }
 
-    toggleExerciseDescription()
-};
+    toggleExerciseDescription();
+  };
 
-return (
+  return (
     <Box>
-        <Box 
-            onClick={exerciseClickHandler}
-            borderRadius='lg'
-            bg='teal.100'
-            borderColor='gray.200'
-            border='1px'
-            maxWidth='100%'
-            fontSize='2xl'
-            p='28px'
-            cursor='pointer'>
-            <Flex justifyContent='end' mb='-9'>
-                <IconButton
-                onClick={removeExerciseHandler}
-                variant='outline'
-                aria-label='remove exercise'
-                colorScheme='teal'
-                color='#285E61'
-                width='10px'
-                size='sm'
-                icon={<SmallCloseIcon/>}
-            />
-            </Flex>
-            <Heading color='#285E61' size='lg' onClick={exerciseClickHandler}>
-                {exerciseTitle}
-            </Heading>
-        </Box>
+      <Box
+        onClick={exerciseClickHandler}
+        borderRadius="lg"
+        bg="teal.100"
+        borderColor="gray.200"
+        border="1px"
+        maxWidth="100%"
+        fontSize="2xl"
+        p="28px"
+        cursor="pointer"
+      >
+        <Flex justifyContent="end" mb="-9">
+          <IconButton
+            onClick={removeExerciseHandler}
+            variant="outline"
+            aria-label="remove exercise"
+            colorScheme="teal"
+            color="#285E61"
+            width="10px"
+            size="sm"
+            icon={<SmallCloseIcon />}
+          />
+        </Flex>
+        <Heading color="#285E61" size="lg" onClick={exerciseClickHandler}>
+          {exerciseTitle}
+        </Heading>
+      </Box>
 
-        {/* */}
-        <Collapse in={exerciseOpen}>
-            <Flex 
-                maxHeight='200px'
-                p='30px'
-                color='#285E61'
-                borderColor='gray.200'
-                ml='2'
-                mr='2'
-                bg='teal.50'
-                rounded='md'
-                shadow='md'
-                justifyContent='center'
-                overflow='hidden'>
-                <IconButton 
-                    size='md'
-                    mt='-5'
-                    ml='-3'
-                    onClick={toggleExerciseDescription}
-                    icon={<ArrowUpIcon />}
-                    variant='ghost'
-                    colorScheme='teal'
-                    borderRadius='full'
-                    fontSize='xl'
-                    arial-label='Close Reflections'
-                    />
-                    <Text overflow='auto'>{exerciseDescription}</Text>
-                </Flex>
-            </Collapse>
-        </Box>
-    );
-
+      {/* */}
+      <Collapse in={exerciseOpen}>
+        <Flex
+          maxHeight="200px"
+          p="30px"
+          color="#285E61"
+          borderColor="gray.200"
+          ml="2"
+          mr="2"
+          bg="teal.50"
+          rounded="md"
+          shadow="md"
+          justifyContent="center"
+          overflow="hidden"
+        >
+          <IconButton
+            size="md"
+            mt="-5"
+            ml="-3"
+            onClick={toggleExerciseDescription}
+            icon={<ArrowUpIcon />}
+            variant="ghost"
+            colorScheme="teal"
+            borderRadius="full"
+            fontSize="xl"
+            arial-label="Close Reflections"
+          />
+          <Text overflow="auto">{exerciseDescription}</Text>
+        </Flex>
+      </Collapse>
+    </Box>
+  );
 };
 
-export {ExerciseHome, ExerciseDash};
-
-
-
-
-
-    
+export { ExerciseHome, ExerciseDash };

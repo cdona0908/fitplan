@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
@@ -24,13 +24,12 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const SAVE_EXERCISE = gql `
-  mutation saveExercise($_id:ID!) {
-    
-    saveExercise(_id: $_id) {
+export const SAVE_EXERCISE = gql`
+  mutation saveExercise($id: ID!) {
+    saveExercise(_id: $id) {
       _id
       username
-      email      
+      email
       exercises {
         _id
         exerciseTitle
@@ -38,7 +37,7 @@ export const SAVE_EXERCISE = gql `
         image
         categories {
           _id
-          categoryName        
+          categoryName
         }
       }
     }
@@ -46,7 +45,7 @@ export const SAVE_EXERCISE = gql `
 `;
 
 export const REMOVE_EXERCISE = gql`
-  mutation removeExercise($_id:ID!) {
+  mutation removeExercise($_id: ID!) {
     removeExercise(_id: $_id) {
       _id
       username
@@ -57,7 +56,7 @@ export const REMOVE_EXERCISE = gql`
         image
         categories {
           _id
-          categoryName        
+          categoryName
         }
       }
     }
@@ -89,13 +88,27 @@ export const ADD_ROUTINE = gql`
 `;
 
 export const ADD_WORKOUT = gql`
-  mutation addWorkout($routineId: ID!, $workoutName: String!, $weight: Int, $sets: Int, $reps: Int, $time: Int) {
-    addWorkout(routineId: $routineId, workoutName: $workoutName, weight: $weight, sets: $sets, reps: $reps, time: $time) {
+  mutation addWorkout(
+    $routineId: ID!
+    $workoutName: String!
+    $weight: Int
+    $sets: Int
+    $reps: Int
+    $time: Int
+  ) {
+    addWorkout(
+      routineId: $routineId
+      workoutName: $workoutName
+      weight: $weight
+      sets: $sets
+      reps: $reps
+      time: $time
+    ) {
       name
       _id
       createdAt
       workouts {
-        _id        
+        _id
         workoutName
         weight
         sets
