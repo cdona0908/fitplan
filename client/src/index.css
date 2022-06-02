@@ -75,14 +75,13 @@ margin-top: 20px;
 
 
 /* --- FOOTER STYLING --- */
+
 .footer {
-  position: absolute;
+  position: relative;
   width:100%;
   bottom: -75px;
-  opacity:50%;
 }
 
 p {
   font-weight: bold;
 }
-

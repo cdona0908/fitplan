@@ -111,6 +111,8 @@ const ExerciseHome = ({exercise}) => {
                                     : false
                             }
                             colorScheme="gray.400"
+                            _hover={{ bg: 'gray.400' }}
+                            bg="#FFCC00"
                             variant="outline"
                             onClick={handleHomeClick}>
                             Save Exercise

@@ -1,16 +1,16 @@
 import React from "react";
 // imports used from Chakra UI
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Text, Flex, Center} from "@chakra-ui/react";
 
 const Footer = () => {
   return (
-    <div className="wrapper">
+    <Flex className="wrapper">
       <Center
         className="footer"
         minWidth="max-content"
         alignItems="center"
         gap="2"
-        bg="#FFFFFF"
+        bg="#FFCC00"
       >
         <Box p="5">
           <Text fontSize="lg" color="black">
@@ -18,7 +18,7 @@ const Footer = () => {
           </Text>
         </Box>
       </Center>
-    </div>
+    </Flex>
   );
 };
 

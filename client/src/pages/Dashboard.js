@@ -119,7 +119,7 @@ const Dashboard = () => {
                   No exercises!
                 </AlertTitle>
                 <AlertDescription maxWidth="sm">
-                  Go to the{" "}
+                  Go to the {" "}
                   <i>
                     <Link to="/">homepage</Link>
                   </i>{" "}

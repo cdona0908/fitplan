@@ -215,7 +215,7 @@ function SignupForm() {
                   onChange={handleChange}
                 />
                 <InputRightElement width="4.5rem">
-                  <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  <Button  h="1.75rem" size="sm" onClick={handleClick}>
                     {show ? 'Hide' : 'Show'}
                   </Button>
                 </InputRightElement>
@@ -225,10 +225,10 @@ function SignupForm() {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={handleFormSubmit} colorScheme="yellow" mr={3}>
+            <Button onClick={handleFormSubmit} bg="#FFCC00"  _hover={{ bg: 'gray.400' }} mr={3}>
               Save
             </Button>
-            <Button onClick={onClose} colorScheme='red'>Cancel</Button>
+            <Button onClick={onClose} bg='red'  _hover={{ bg: 'gray.400' }}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
