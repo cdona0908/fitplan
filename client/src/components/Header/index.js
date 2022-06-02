@@ -41,7 +41,7 @@ const Header = () => {
                 width="100px"
                 height="85px"
                 objectFit="cover"
-                src={require('../../assets/fit-logo.png')}
+                src={require('../../assets/logo.png')}
                 alt="fitplan logo"
               />
             </Box>
