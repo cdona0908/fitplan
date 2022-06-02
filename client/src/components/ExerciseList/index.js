@@ -1,5 +1,5 @@
 // Importing the parameters that we are going to used to implement the function
-import React from 'react';
+import React from "react";
 import {
     Modal,
     ModalOverlay,
@@ -159,7 +159,7 @@ const ExerciseDash = ({exercise}) => {
     };
 const exerciseClickHandler = (event) => {
     if (event.target !== event.currentTarget) {
-        return
+      return;
     }
     toggleExerciseDescription()
 };

@@ -161,7 +161,7 @@ const Dashboard = () => {
           <Center>My routines</Center>
         </Heading>
         <Center>
-          <ButtonGroup isAtached mt="3">
+          <ButtonGroup isAttached mt="3">
             <RoutineForm />
           </ButtonGroup>
         </Center>

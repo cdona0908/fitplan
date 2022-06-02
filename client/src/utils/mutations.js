@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
@@ -93,13 +93,27 @@ export const ADD_ROUTINE = gql`
 `;
 
 export const ADD_WORKOUT = gql`
-  mutation addWorkout($routineId: ID!, $workoutName: String!, $weight: Int, $sets: Int, $reps: Int, $time: Int) {
-    addWorkout(routineId: $routineId, workoutName: $workoutName, weight: $weight, sets: $sets, reps: $reps, time: $time) {
+  mutation addWorkout(
+    $routineId: ID!
+    $workoutName: String!
+    $weight: Int
+    $sets: Int
+    $reps: Int
+    $time: Int
+  ) {
+    addWorkout(
+      routineId: $routineId
+      workoutName: $workoutName
+      weight: $weight
+      sets: $sets
+      reps: $reps
+      time: $time
+    ) {
       name
       _id
       createdAt
       workouts {
-        _id        
+        _id
         workoutName
         weight
         sets

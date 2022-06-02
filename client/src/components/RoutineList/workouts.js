@@ -11,12 +11,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { InfoIcon, ChevronRightIcon, ArrowUpIcon } from "@chakra-ui/icons";
-const RoutineWorkouts = ({
-  workoutOpen,
-  workouts,
-  toggleWorkouts,
-  name
-}) => {
+const RoutineWorkouts = ({ workoutOpen, workouts, toggleWorkouts, name }) => {
   return (
     <Collapse in={workoutOpen} animateOpacity>
       <Flex
@@ -57,7 +52,8 @@ const RoutineWorkouts = ({
               return (
                 <ListItem key={workout._id} mb="5px">
                   <ListIcon as={ChevronRightIcon} mb="1px" mr="5px"></ListIcon>
-                  {workout.workoutName}
+                  Workout Name: {workout.workoutName} Weight: {workout.weight}{" "}
+                  Sets: {workout.sets} Reps: {workout.reps} Time: {workout.time}
                 </ListItem>
               );
             })}

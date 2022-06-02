@@ -19,7 +19,7 @@ import {
 import { useMutation } from "@apollo/client";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { AddIcon } from "@chakra-ui/icons";
-export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
+export const WorkoutForm = ({ routineId }) => {
   const [workoutState, setWorkoutState] = useState("");
   const [errorText, setErrorText] = useState("");
   const toast = useToast();
@@ -35,11 +35,14 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
   // on form change
   const changeHandler = (event) => {
-    const { value } = event.target;
+    const { name, value } = event.target;
+    console.log("value", value);
     // update progress bar
     // add input to workoutState
-    setWorkoutState(value);
-    
+    setWorkoutState({
+      ...workoutState,
+      [name]: value,
+    });
   };
 
   // on form submit
@@ -57,7 +60,14 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
     // add workoutState to mutation
     try {
       await addWorkout({
-        variables: { workoutName: workoutState, routineId: routineId, weight: weight, sets: sets, reps: reps, time: time },
+        variables: {
+          workoutName: workoutState.workoutName,
+          routineId: routineId,
+          weight: parseInt(workoutState.weight),
+          sets: parseInt(workoutState.sets),
+          reps: parseInt(workoutState.reps),
+          time: parseInt(workoutState.time),
+        },
       });
       // reset workoutState
       setWorkoutState("");
@@ -104,19 +114,17 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
           <ModalHeader>Add Workout</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-          <FormControl isInvalid={errorText}>
+            <FormControl isInvalid={errorText}>
               <FormLabel>Name:</FormLabel>
               <Textarea
                 ref={initialRef}
-                name="name"
+                name="workoutName"
                 resize="none"
-                value={workoutState.name}
+                value={workoutState.workoutName}
                 onChange={changeHandler}
               />
               <FormErrorMessage>{errorText}</FormErrorMessage>
             </FormControl>
-
-
 
             <FormControl isInvalid={errorText}>
               <FormLabel>Weight:</FormLabel>
@@ -130,8 +138,6 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
               <FormErrorMessage>{errorText}</FormErrorMessage>
             </FormControl>
 
-
-
             <FormControl isInvalid={errorText}>
               <FormLabel>Sets:</FormLabel>
               <Textarea
@@ -143,8 +149,6 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
               />
               <FormErrorMessage>{errorText}</FormErrorMessage>
             </FormControl>
-
-
 
             <FormControl isInvalid={errorText}>
               <FormLabel>Reps:</FormLabel>
@@ -158,8 +162,6 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
               <FormErrorMessage>{errorText}</FormErrorMessage>
             </FormControl>
 
-
-
             <FormControl isInvalid={errorText}>
               <FormLabel>Time:</FormLabel>
               <Textarea
@@ -170,10 +172,6 @@ export const WorkoutForm = ({ routineId, weight, sets, reps, time }) => {
                 onChange={changeHandler}
               />
 
-            
-
-              
-              
               <FormErrorMessage>{errorText}</FormErrorMessage>
             </FormControl>
           </ModalBody>
