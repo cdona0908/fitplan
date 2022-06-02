@@ -6,82 +6,73 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+body::-webkit-scrollbar {
+  width: 1rem;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #FFCC00;
+}
+body::-webkit-scrollbar-track {
+  background: gray;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #FFCC00 ;
+  border-radius: 5px;
+  background: linear-gradient(transparent, #FFCC00);
+  border: #FFCC00;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 .exercises {
   opacity: 65%;
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 2px 2px 10px #000000;
 }
-
-
-
 .exercises:hover {
   opacity: 100%;
 }
-
 .exercise-text {
   text-shadow: 2px 2px 10px #000000;
   color: white;
 }
-
 .exercise-description {
   border-radius: 40px;
-  
 }
-
-
-
-
 /* --- TEXT STYLING --- */
 .center-text {
   text-align: center;
 }
-
 .chakra-heading h1, img {
   padding: 10px;
 }
-
 .chakra-wrap {
   margin-top: 25px;
 }
-
-
 /* --- HEADER STYLING --- */
 button.chakra-button__group {
   margin-right: 50px;
 }
-
 header img {
   margin-left: 25px;
-
 }
-
 .css-1coznbk {
   height: 125px;
 }
-
-
 /* --- BODY STYLING --- */
-
 .css-k008qs {
 margin-top: 20px;
 }
-
-
 /* --- FOOTER STYLING --- */
-
 .footer {
   position: relative;
   width:100%;
   bottom: -75px;
 }
-
 p {
   font-weight: bold;
 }
