@@ -162,7 +162,7 @@ function SignupForm() {
       <Button
         color="#000000"
         variant="ghost"
-        _hover={{ bg: 'teal.300' }}
+        _hover={{ bg: 'gray.400' }}
         onClick={onOpen}>
         Sign Up
       </Button>
@@ -225,10 +225,10 @@ function SignupForm() {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={handleFormSubmit} colorScheme="teal" mr={3}>
+            <Button onClick={handleFormSubmit} colorScheme="yellow" mr={3}>
               Save
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose} colorScheme='red'>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

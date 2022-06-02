@@ -110,7 +110,7 @@ const ExerciseHome = ({exercise}) => {
                                     ? true
                                     : false
                             }
-                            colorScheme="teal"
+                            colorScheme="gray.400"
                             variant="outline"
                             onClick={handleHomeClick}>
                             Save Exercise
@@ -211,7 +211,7 @@ return (
                     onClick={toggleExerciseDescription}
                     icon={<ArrowUpIcon />}
                     variant='ghost'
-                    colorScheme='teal'
+                    colorScheme='gray.400'
                     borderRadius='full'
                     fontSize='xl'
                     arial-label='Close Reflections'

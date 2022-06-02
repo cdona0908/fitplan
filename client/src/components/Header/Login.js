@@ -135,7 +135,7 @@ function LoginForm() {
         <Button
           color="#000000"
           variant="ghost"
-          _hover={{ bg: 'teal.300' }}
+          _hover={{ bg: 'gray.400' }}
           onClick={onOpen}>
           Login
         </Button>
@@ -186,10 +186,10 @@ function LoginForm() {
             </ModalBody>
   
             <ModalFooter>
-              <Button onClick={handleFormSubmit} colorScheme="teal" mr={3}>
+              <Button onClick={handleFormSubmit} colorScheme="yellow" mr={3}>
                 Enter
               </Button>
-              <Button onClick={onClose}>Cancel</Button>
+              <Button onClick={onClose} colorScheme='red'>Cancel</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
