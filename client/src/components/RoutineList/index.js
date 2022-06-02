@@ -15,7 +15,7 @@ import RoutineWorkouts from "./workouts";
 const RoutineList = ({ routine, completed = false, reuseRoutine }) => {
   const { _id, name, description, createdAt, workouts } = routine;
 
-  // set useDisclosure function to custom names
+  // sets this function to names that are custom
   const { isOpen: workoutOpen, onToggle: toggleWorkouts } = useDisclosure();
 
   return (
@@ -46,7 +46,7 @@ const RoutineList = ({ routine, completed = false, reuseRoutine }) => {
           bgColor="teal.100"
         >
           <Text m="2">{description}</Text>
-          <Flex justifyContent="end">
+          <Flex justifyContent="center">
             <Text m="2">{createdAt}</Text>
           </Flex>
         </Box>

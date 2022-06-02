@@ -10,15 +10,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 //import pages
 //import Dashboard from '../src/pages/Dashboard';
 import Home from "./pages/Home";
 import Dashboard from "../src/pages/Dashboard";
 import { StoreProvider } from "./utils/state/UserContext";
-//chakta imports
+
+//chakra imports
 import { Center, Text } from "@chakra-ui/react";
+
 //function from Apollo Client that will retrieve the token from localStorage
 import { setContext } from "@apollo/client/link/context";
+
 // function to retrieve the token from localStorage and set the HTTP request headers of every request to include the token
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
@@ -45,7 +49,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="dashboard" element={<Dashboard />}></Route>
-            {/* catch any routes that are not listed above and return this */}
+            {/* returns this if routes are not from above */}
             {<Route
               path="*"
               element={

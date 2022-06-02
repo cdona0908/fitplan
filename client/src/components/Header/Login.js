@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-// import { Link } from 'react-router-dom';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useNavigate } from 'react-router-dom';
 
-// Imports from @chakra-ui/react to assist with Modal and form styling.
+// Chakra UI imports for styling
 import {
   Button,
   FormControl,
@@ -26,34 +25,34 @@ import {
 } from '@chakra-ui/react';
 
 function LoginForm() {
-    // Importing functions from @chakra-ui/react for when Modal isOpn, onOpen, onClose as useDisclosure
+    // Imports from Chakra UI
     const { isOpen, onOpen, onClose } = useDisclosure();
   
-    // useNavigate to redirect user after login to Dashboard
+    // redirects user to the dashboard
     const navigate = useNavigate();
   
-    // initialRef is where the cursor loads upon Modal opening for the user
+    // initialRef is when the cursor loadsModal opens 
     const initialRef = React.useRef();
-    // finalRef is the last input field for user before submit or cancel button
+
+    // this is the last input for the user before submition
     const finalRef = React.useRef();
   
-    // useToast from Chakra-UI for success message
+    // used from Chakra for success message
     const toast = useToast();
-    // import positions for toast
-    // const position = ['top-right'];
+
   
-    // Setting initial form state by using state for already registered users with username and password fields.
+    // Sets initial form state by utilizing the state for users who are already registered
     const [formState, setFormState] = useState({ username: '', password: '' });
   
-    // Initial form state for error message
+    // error message for formState
     const [errorMessage, setError] = useState({ type: '', message: '' });
   
-    // User login using LOGIN_USER mutation
+    // login for the user utilizing the mutation
     const [login] = useMutation(LOGIN_USER);
   
     
   
-    // Any time form input has been added it registers on the page as users type, generating and returning updated form state.
+    // generates updated formState
     const handleChange = (event) => {
       const { name, value } = event.target;
       setFormState({
@@ -62,12 +61,10 @@ function LoginForm() {
       });
     };
   
-    // Using LOGIN_USER mutation variables plus user token, we can validate when a user has correctly logged in.
-    // Otherwise prompt the user to enter their correct credentials or register if they do not have an account.
     const handleFormSubmit = async () => {
       const { username, password } = formState;
   
-      // validate
+      // validation
       if (!username) {
         setError({ type: 'username', message: 'Username is required.' });
         return;
@@ -77,7 +74,7 @@ function LoginForm() {
         return;
       }
   
-      // add login data using mutation
+      // login data added utilizing the mutations
       try {
         const mutationResponse = await login({
           variables: {
@@ -86,10 +83,10 @@ function LoginForm() {
           }
         });
         const token = mutationResponse.data.login.token;
-        // Using Auth.js imported at the top, the user's credentials are verified with their JWT
+        // verified with JWT from login credentials
         Auth.login(token);
   
-        // Toast will display message on successful login
+        // successful login display message
         toast({
           title: 'Success!',
           position: 'top-right',
@@ -99,17 +96,17 @@ function LoginForm() {
           isClosable: true
         });
   
-        // reset LoginForm state, clearing values in fields username and password
+        // resets the username and password fields
         setFormState({ username: '', password: '' });
   
-        // Close modal
+        // Closes the modal
         onClose();
   
-        // Redirect user to dashboard view
+        // directs user to the dashboard
         navigate('/dashboard', { replace: true });
       } catch (e) {
         console.log(e);
-        // Display error message using toast
+        // shows error message
         toast({
           title: 'We could not validate your account.',
           position: 'top-right',
@@ -119,11 +116,10 @@ function LoginForm() {
           duration: 3000,
           isClosable: true
         });
-        // Leave modal open for user to re-try login credentials
       }
     };
   
-    // Create a password input with a show/hide password functionality
+    // password data input that lets you show or hide your password
     const [show, setShow] = React.useState(false);
     const handleClick = () => setShow(!show);
   
@@ -133,7 +129,7 @@ function LoginForm() {
   
     const [overlay] = React.useState(<OverlayOne />);
   
-    // function LoginForm() will generate the following Modal
+    // following modal shows from the login function
     return (
       <>
         <Button

@@ -1,8 +1,10 @@
 import React, { createContext, useContext } from 'react';
-// import reducer
+
+// import  the reducer from ./reducers.js
 import { useUserReducer } from './reducers';
 
 const StoreContext = createContext();
+
 const { Provider } = StoreContext;
 
 export const StoreProvider = ({ value = [], ...props }) => {
